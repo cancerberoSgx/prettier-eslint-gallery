@@ -4,7 +4,7 @@
 
 # What's this?
 
- * Gallery of popular eslint configurations for JavaScript styles
+ * Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choise 
  * Research how well current formatting tools so the job
  * Research euristics to do better job
 
@@ -49,6 +49,37 @@ var config = {
 formatter(config) // synchronous !
 ```
 
+# issues / TODOS
+
+ * probably we will need to rename this project to someting more generic if we decide to use other tools besides prettier
+ * test if thi works : npm install -g gallery
+ * npm publish
+ * test node api doc in readme
+ 
+ * --input to accept globs
+
+ * add a static html that shows inputs and linkts to each output style <--- WIP
+
+ * make a tool to check each of the stylesif they really work - check abobe. count errors before an after and report. 
+
+
+ * acept custom eslint - like for security - performance... 
+ * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
+
+  * https://github.com/gulpjs/eslint-config-gulp
+  * https://github.com/sindresorhus/eslint-config-xo
+  * https://github.com/dustinspecker/awesome-eslint
+  * https://github.com/walmartlabs/eslint-config-defaults
+  * https://github.com/FormidableLabs/eslint-config-formidable
+
+
+  then there are other that has nothing to do with style but with performance , security - should investigate: 
+  https://www.npmjs.com/search?q=eslint-c&page=1&ranking=popularity
+
+
+
+
+
 <!-- # how to know if it really works?
 
 ```sh
@@ -61,34 +92,3 @@ node node_modules/eslint/bin/eslint.js -c  eslint-config/google/.eslintrc.js  as
 # you will see lots less errors
 
 ``` -->
-
-# Nice to have
-
- * acept custom eslint - like for security - performance... 
-
-# issues / TODOS
-
- * tool --list-styles // list all supported styles
- * probably we will need to rename this project to someting more generic if we decide to use other tools besides prettier
- * npm install -g - test it !
- * test node api doc in readme
- 
- * --input to accept globs
-
- * add a static html that shows inputs and linkts to each output style
-
- * make a tool to check each of the stylesif they really work - check abobe. count errors before an after and report. 
-
- * shell script or js that generate all outputs with a single command
-
- * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
-
-  * https://github.com/gulpjs/eslint-config-gulp
-  * https://github.com/sindresorhus/eslint-config-xo
-  * https://github.com/dustinspecker/awesome-eslint
-  * https://github.com/walmartlabs/eslint-config-defaults
-  * https://github.com/FormidableLabs/eslint-config-formidable
-
-
-  then there are other that has nothing to do with style but with performance , security - should investigate: 
-  https://www.npmjs.com/search?q=eslint-c&page=1&ranking=popularity
