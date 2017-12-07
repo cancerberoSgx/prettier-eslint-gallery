@@ -1,23 +1,20 @@
 {
   "name": "prettier-eslint-gallery",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/tool.js",
+  "bin": "src/index.js",
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "jasmine": "^2.8.0"
-  },
   "dependencies": {
     "babel-eslint": "^8.0.3",
     "escodegen": "^1.9.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
     "eslint-config-common": "^2.0.0",
     "eslint-config-google": "^0.9.1",
     "eslint-config-gulp": "^2.1.0",
@@ -26,6 +23,7 @@
     "eslint-config-walmart": "^2.2.0",
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-hapi": "^4.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-node": "^5.2.1",
@@ -33,9 +31,13 @@
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
     "esprima": "^4.0.0",
+    "handlebars": "^4.0.11",
     "prettier-eslint": "^8.2.5",
     "shelljs": "^0.7.8",
     "uglify-js": "^3.2.1",
-    "yargs": "^10.0.3"
+    "yargs-parser": "^8.0.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0"
   }
 }

@@ -1,7 +1,6 @@
 const format = require('prettier-eslint')
-const path = require('path')
 
-module.exports = function doit(config) {
+module.exports.tool = function (config) {
   var source = config.source
 
   if (config.mode == 'normalMinifyFirst') {

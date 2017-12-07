@@ -12,7 +12,6 @@
             width: 1000px;
             height: 700px;
         }
-
         .modal-dialog {
             width: 1050px !important;
             height: 705px !important;
@@ -26,18 +25,16 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.7/ace.js"></script>
 
 </head>
 
 <body>
+    
     <a href="https://github.com/cancerberoSgx/prettier-eslint-gallery">Project Home</a>
-
 
     <button type="button" class="btn btn-primary btn-lg edit-file-button">
         Edit file !
@@ -83,7 +80,6 @@
 
         $('.edit-file-button').click(() => {
             $('#editCodeModal').modal({ show: true })
-            // $('.modal-dialog, .modal, .modal-content')
             showEditCodeModal({ fileName: 'pepe.js', path: '../assets/input/sccollection.js' })
         })
     </script>
