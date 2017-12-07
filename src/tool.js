@@ -1,21 +1,14 @@
-// this should run in the browser
 const format = require('prettier-eslint')
 const path = require('path')
 
-module.exports = function doit (config) {
+module.exports = function doit(config) {
   var source = config.source
-  
 
-  if (config.minifyFirst) {
+  if (config.mode == 'normalMinifyFirst') {
     source = require('./tools/minify').removeSpacesOnly(source)
   }
 
-  console.log(
-    'Executing prettier-eslint with style ' +
-      config.eslintPath +
-      ' - input : ' +
-      config.input
-  )
+  console.log(`Executing prettier-eslint with style ${config.eslintPath}, input : ${config.input}`)
 
   const options = {
     text: source,

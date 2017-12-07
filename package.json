@@ -4,12 +4,16 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node node_modules/jasmine/bin/jasmine.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jasmine": "^2.8.0"
+  },
   "dependencies": {
     "babel-eslint": "^8.0.3",
     "escodegen": "^1.9.0",
@@ -23,7 +27,6 @@
     "eslint-config-walmart": "^2.2.0",
     "eslint-plugin-filenames": "^1.2.0",
     "eslint-plugin-hapi": "^4.1.0",
-    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-node": "^5.2.1",
