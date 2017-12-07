@@ -1,17 +1,12 @@
 //@module Address
-define('Address.Collection'
-  ,	[	'Address.Model',
-      'Backbone'
-  ]
-  ,	function(
-    Model
-    ,	Backbone
-  ) {
+define('Address.Collection', ['Address.Model', 'Backbone'], function(
+    Model,
+    Backbone
+) {
     'use strict';
 
     //@class Address.Collection @extend Backbone.Collection
-    return Backbone.Collection.extend(
-      {
+    return Backbone.Collection.extend({
         //@property {Address.Model} model
         model: Model,
 
@@ -22,7 +17,10 @@ define('Address.Collection'
         //@param {Address.Model} model
         //@return {Number}
         comparator: function(model) {
-          return (model.get('defaultbilling') === 'T' || model.get('defaultshipping') === 'T') ? 0 : 1;
+            return model.get('defaultbilling') === 'T' ||
+                model.get('defaultshipping') === 'T'
+                ? 0
+                : 1;
         }
-      });
-  });
+    });
+});

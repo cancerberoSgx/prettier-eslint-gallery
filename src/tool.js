@@ -20,10 +20,9 @@ module.exports = function doit (config) {
   const options = {
     text: source,
     filePath: config.eslintPath,
-    logLevel: config.debug || undefined
+    logLevel: config.debug || undefined,
+    prettierLast: true
   }
 
-  const formatted = format(options)
-
-  return formatted
+  return format(options)
 }

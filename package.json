@@ -2,7 +2,7 @@
   "name": "prettier-eslint-gallery",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,9 +17,12 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-common": "^2.0.0",
     "eslint-config-google": "^0.9.1",
+    "eslint-config-gulp": "^2.1.0",
+    "eslint-config-hapi": "^11.1.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-walmart": "^2.2.0",
     "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-hapi": "^4.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
