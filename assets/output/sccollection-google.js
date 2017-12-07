@@ -3,7 +3,7 @@ define('Address.Collection', ['Address.Model', 'Backbone'], function(
   Model,
   Backbone
 ) {
-  'use strict'
+  'use strict';
 
   //@class Address.Collection @extend Backbone.Collection
   return Backbone.Collection.extend({
@@ -20,7 +20,7 @@ define('Address.Collection', ['Address.Model', 'Backbone'], function(
       return model.get('defaultbilling') === 'T' ||
         model.get('defaultshipping') === 'T'
         ? 0
-        : 1
-    }
-  })
-})
+        : 1;
+    },
+  });
+});
