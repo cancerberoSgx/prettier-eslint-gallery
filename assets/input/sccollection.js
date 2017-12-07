@@ -1,6 +1,6 @@
-//@module Address
-define('Address.Collection'
-,	[	'Address.Model'
+//@module Banana
+define('Banana.Collection'
+,	[	'Banana.Model'
 	,	'Backbone'
 	]
 ,	function (
@@ -10,22 +10,21 @@ define('Address.Collection'
 {
 	'use strict';
 
-	//@class Address.Collection @extend Backbone.Collection
+	//@class Banana.Collection @extend Backbone.Collection
 	return Backbone.Collection.extend(
 	{
-		//@property {Address.Model} model
+		//@property {Banana.Model} model
 		model: Model
 
 		//@property {String} url
-	,	url: 'services/Address.Service.ss'
+	,	url: 'api/banana.php'
 
-		//@method comparator Defines a custom comparative method between address to sort the address taking into account if there are default shipping or default billing
-		//@param {Address.Model} model
+		//@method comparator Defines a custom comparative method between Banana to sort the Banana taking into account if there are default shipping or default billing
+		//@param {Banana.Model} model
 		//@return {Number}
 	,	comparator: function (model)
 		{
-			return (model.get('defaultbilling') === 'T' || model.get('defaultshipping') === 'T') ? 0 : 1;
+			return (model.get('notready') || model.get('alreadyeaten')) ? 0 : 1;
 		}
 	});
 });
-

@@ -20,6 +20,8 @@ function main() {
   buildAll({ mode: 'onlyEslintFix' })
 }
 
+module.exports = main
+
 
 function doit(config, input, style) {
   let cmd = `node . --input  ${input} --style ${style} --output assets/output/sccollection-${style}-${config.mode}.js`
@@ -46,4 +48,4 @@ function doit(config, input, style) {
 }
 
 
-main()
+// main()
