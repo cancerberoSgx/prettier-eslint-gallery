@@ -7,7 +7,7 @@ module.exports = function doit (config) {
   
 
   if (config.minifyFirst) {
-    source = require('./minify')(source)
+    source = require('./tools/minify').removeSpacesOnly(source)
   }
 
   console.log(

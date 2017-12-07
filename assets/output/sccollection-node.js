@@ -11,7 +11,7 @@ define('Address.Collection', ['Address.Model', 'Backbone'], function(
     model: Model,
 
     //@property {String} url
-    url: 'services/foo',
+    url: 'services/Address.Service.ss',
 
     //@method comparator Defines a custom comparative method between address to sort the address taking into account if there are default shipping or default billing
     //@param {Address.Model} model
