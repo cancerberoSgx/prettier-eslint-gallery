@@ -23,7 +23,7 @@ define('Banana.Collection'
 				required: true,
 				fn: function()
 				{
-					return value.length > 20 ? 'Name is too long' : false
+					return value.length > 20 ? 'Name is too long' : false;
 				}
 			}
 		,	phone: {
@@ -57,10 +57,10 @@ define('Banana.Collection'
 				}
 				else 
 				{
-					return 'paysandu'
+					return 'paysandu';
 				}
 			}); 
-			data.volumes = dic
+			data.volumes = dic;
 
 			//TODO: while, switch, json objects
 			return data;

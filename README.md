@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/cancerberoSgx/pretties-eslint-gallery.png?branch=master)](https://travis-ci.org/cancerberoSgx/pretties-eslint-gallery)
+[![Dependencies](https://david-dm.org/cancerberosgx/pretties-eslint-gallery.svg)](https://david-dm.org/cancerberosgx/pretties-eslint-gallery)
+
+
+
 [Gallery Demo](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/)
 
 [Project Home](https://github.com/cancerberoSgx/prettier-eslint-gallery)
@@ -47,6 +52,21 @@ var config = {
   style: 'airbnb'
 }
 formatter(config) // synchronous !
+```
+
+# Useful commands
+
+Run tests and regenerate all output files:
+```sh
+npm test 
+```
+
+Generate output and gallery:
+```sh
+npm test
+rm gallery/index.html
+node src/gallery-generator/index
+static-server .
 ```
 
 # issues / TODOS

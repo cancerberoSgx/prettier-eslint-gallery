@@ -36,12 +36,7 @@
     
     <a href="https://github.com/cancerberoSgx/prettier-eslint-gallery">Project Home</a>
 
-    <button type="button" class="btn btn-primary btn-lg edit-file-button">
-        Edit file !
-    </button>
-    <button type="button" class="btn edit-file-get-value">
-        get value
-    </button>
+   
 
     <div class="modal fade" id="editCodeModal" tabindex="-1" role="dialog" aria-labelledby="editCodeModalLabel">
         <div class="modal-dialog" role="document">
@@ -63,13 +58,46 @@
         </div>
     </div>
 
-    <script>
-        var inputFile = '../assets/input/sccollection.js'
-        // inputFile is a string
+    <h1>Files</h1>
+    <table>
+        <tr>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/input/sccollection.js">sccollection.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-airbnb-normal.js">sccollection-airbnb-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-common-normal.js">sccollection-common-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-google-normal.js">sccollection-google-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-gulp-normal.js">sccollection-gulp-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-hapi-normal.js">sccollection-hapi-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-node-normal.js">sccollection-node-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-standard-normal.js">sccollection-standard-normal.js</button>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-walmart-normal.js">sccollection-walmart-normal.js</button>
+        </td>
+        </tr>
+    </table>    
 
+    <script>
+        // files is Array<Array<String>> already defined
+
+
+var editor
 function showEditCodeModal(config) {
-    $.get(config.path).then(data => {
-        var editor
+    $.get(config.path).then(function(data){
         var target = $('.editor-test-1')
         if (!editor) {
             editor = ace.edit(target.get(0))
@@ -79,11 +107,12 @@ function showEditCodeModal(config) {
         target.focus()
         $('.modal-title').text(config.fileName)
     })
-    //TODO: not foundd
+    //TODO: not found error
 }
 
-$('.edit-file-button').click(() => {
+$('.edit-file-button').click(function(event) {
     $('#editCodeModal').modal({ show: true })
+    var inputFile = $(event.target).data('input-file')
     showEditCodeModal({ fileName: inputFile, path: inputFile })
 })
     </script>

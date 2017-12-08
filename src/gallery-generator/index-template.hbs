@@ -36,12 +36,7 @@
     
     <a href="https://github.com/cancerberoSgx/prettier-eslint-gallery">Project Home</a>
 
-    <button type="button" class="btn btn-primary btn-lg edit-file-button">
-        Edit file !
-    </button>
-    <button type="button" class="btn edit-file-get-value">
-        get value
-    </button>
+   
 
     <div class="modal fade" id="editCodeModal" tabindex="-1" role="dialog" aria-labelledby="editCodeModalLabel">
         <div class="modal-dialog" role="document">
@@ -63,8 +58,20 @@
         </div>
     </div>
 
+    <h1>Files</h1>
+    <table>
+        {{#each files}}
+        <tr>
+        {{#each this}}
+        <td>
+        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="{{this}}">{{basename this}}</button>
+        </td>
+        {{/each}}
+        </tr>
+        {{/each}}
+    </table>    
+
     <script>
-        var inputFile = '{{inputFile}}'
         {{{frontendScript}}}
     </script>
 
