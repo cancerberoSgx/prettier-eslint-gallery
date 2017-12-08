@@ -2,27 +2,31 @@ var handlebars = require('handlebars')
 var fs = require('fs')
 var path = require('path')
 
-handlebars.registerHelper('fixOutputName', function(s) {
+handlebars.registerHelper('getMode', function(s) {
     s = path.basename(s)
     s = s.substring(s.indexOf('-')+1, s.indexOf('.'))
-    return s
+    return s.split('-')[1]
 })
-
+handlebars.registerHelper('getName', function(s) {
+    return path.basename(s)
+})
 var template = handlebars.compile(fs.readFileSync('src/gallery-generator/index-template.hbs').toString())
+var styles = require('../config').getAvailableStyles()
+var modes = require('../config').getAvailableModes()
+var inputFiles = ['../assets/input/sccollection.js']//TODO autogenerate
 
-var styles = require('../files').getAvailableStyles()
-var modes = require('../files').getAvailableModes()
-var files = [ //TODO autogenerate
-    ['../assets/input/sccollection.js'].concat( styles.map(style=>{
+var files = []
+inputFiles.forEach(inputFile=>{
+    files.push([inputFile].concat(styles.map(style=>{
         return modes.map(mode=>`../assets/output/sccollection-${style}-${mode}.js`)
-        // return `../assets/output/sccollection-${style}-normal.js`
-    }))
-]
+    })))
+})
+//     inputFiles.concat( styles.map(style=>{
+//         return modes.map(mode=>`../assets/output/sccollection-${style}-${mode}.js`)
+//     }))
+// ]
 
-var context = {
-    files,
-    // frontendScript: fs.readFileSync('src/gallery-generator/frontend-script.js').toString()
-}
+var context = {files, styles, inputFiles}
 
 var output = template(context)
 fs.writeFileSync('gallery/index.html', output)

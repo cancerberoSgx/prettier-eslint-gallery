@@ -11,8 +11,14 @@ module.exports.getEslintRcFor = function (style) {
 
 
 module.exports.getAvailableStyles = function () {
-  return shell.ls('eslint-config/').map(f=>path.basename(f))
+  return shell.ls('eslint-config/').map(f => path.basename(f))
 }
 module.exports.getAvailableModes = function () {
-  return ['default'/*, 'defaultPrettierLast'*/, 'defaultMinifyFirst', 'onlyEslintFix', 'onlyEslintFixMinifyFirst']
+  return [
+    'default',
+    // 'defaultPrettierLast',
+    // 'defaultMinifyFirst',
+    'onlyEslintFix',
+    // 'onlyEslintFixMinifyFirst'
+  ]
 }

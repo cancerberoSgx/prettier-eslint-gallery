@@ -10,14 +10,13 @@ module.exports.tool = function (config) {
 
   if (config.mode.startsWith('onlyEslintFix')) {
     source = customFormatTools.eslintFixOnly(source, config.eslintPath)
-    // source = customFormatTools.eslintFixOnly(source, config.eslintPath)
   }
   else if (config.mode.startsWith('default')){
     const options = {
       text: source,
       filePath: config.eslintPath,
-      logLevel: config.debug || undefined,
-      prettierLast: true//config.mode.indexOf('PrettierLast')!=-1
+      logLevel: config.debug || undefined//,
+      // prettierLast: true//config.mode.indexOf('PrettierLast')!=-1
     }
     source = format(options)
   }

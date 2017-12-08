@@ -1,7 +1,7 @@
 // This is a script that will call this tool via command line transforming all files in assets/input using all known modes and put it in the assets/output
 
 var shell = require('shelljs')
-var configTool = require('../files')
+var configTool = require('../config')
 var assert = require('assert')
 
 function buildAll(config) {

@@ -6,21 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery</title>
 
-    <link rel="stylesheet" href="styles.css" >
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
 
+    <link rel="stylesheet" href="styles.css" >
 </head>
 
 <body>
     
-    <a href="https://github.com/cancerberoSgx/prettier-eslint-gallery">Project Home</a>
-
+    <h3><a href="https://github.com/cancerberoSgx/prettier-eslint-gallery">prettier-eslint-gallery - Project Home</a></h3>
    
+    <h1>Files</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Original</th>
+                {{#each styles}}
+                   <th>{{this}}</th>
+                {{/each}}
+            </tr>
+        </thead>
 
+        <tbody>
+        {{#each files}}
+            <tr>
+                {{#each this}}  
+                <td>
+                    {{#if @first}}
+                    <input type="checkbox" title="Select for Diff" class="file-diff" data-input-file="{{this}}" data-input-file-simple="{{getMode this}}">
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{getName this}}  </button>
+                    {{else}}
+                    {{#each this}}
+                        <input type="checkbox" title="Select for Diff" class="file-diff" data-input-file="{{this}}" data-input-file-simple="{{getMode this}}">
+                        <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{getMode this}}</button>
+                        <br>
+                    {{/each}}
+                    {{/if}}
+                </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>    
+
+
+
+    {{!-- editor modal --}}
     <div class="modal fade" id="editCodeModal" tabindex="-1" role="dialog" aria-labelledby="editCodeModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -31,7 +65,7 @@
                     <h4 class="modal-title" id="editCodeModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    <div class="editor-test-1">
+                    <div class="editor-container">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -41,30 +75,11 @@
         </div>
     </div>
 
-    <h1>Files</h1>
-    <table>
-        {{#each files}}
-        <tr>
-            {{#each this}}  
-            <td>
-                {{#if @first}}
-                <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{fixOutputName this}} (original)</button>
-                {{else}}
-                {{#each this}}
-
-                    <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{fixOutputName this}}</button><br/>
-                {{/each}}
-                {{/if}}
-            </td>
-            {{/each}}
-        </tr>
-        {{/each}}
-    </table>    
 
 
-{{!-- diff modal test --}}
-<button id="test-diff-modal">test-diff-modal</button>
-   <div class="modal fade" id="diffModal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
+    {{!-- diff modal --}}
+    <button id="open-diff-modal" class="btn btn-primary">Diff selected</button>
+    <div class="modal fade" id="diffModal" tabindex="-1" role="dialog" aria-labelledby="diffModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -88,7 +103,6 @@
         </div>
     </div>
 
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -99,30 +113,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
     <script src="ace-diff.js"></script>
 
-<script src="frontend.js"></script>
-{{!-- 
-    <script>
-        {{{frontendScript}}}
-    </script> --}}
-
-{{!-- 
-<table width="100%">
-    <tr>
-        <td width="50%"><div id="left-editor"></div></td>
-        <td><div id="acediff-gutter"></div></td>
-        <td width="50%"><div id="right-editor"></div></td>
-    </tr>
-</table> --}}
-
-
+    <script src="frontend.js"></script>
     
-
-
-<script>
-
-
-</script>
-
 </body>
 
 </html>
