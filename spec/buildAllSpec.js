@@ -7,6 +7,6 @@ describe('buildall', () => {
         expect(shell.ls( 'assets/output/*.js').length>0).toBe(true)
     })
     it('check that moreorless it works', ()=>{
-        expect(shell.cat('assets/output/sccollection-standard-normal.js').toString()).toContain('} else if (protein.name === ')
+        expect(shell.cat('assets/output/sccollection-standard-default.js').toString()).toContain('} else if (protein.name === ')
     })
 })

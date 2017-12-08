@@ -1,21 +1,19 @@
 // cmd line entry point
 var args = require('yargs-parser')(process.argv.slice(2))
-
+var configUtils = require('./files')
 const shell = require('shelljs')
 const path = require('path')
-
 const tool = require('./tool').tool
 
-const getEslintRcFor = require('./files').getEslintRcFor
-
-
-const getAvailableStyles = require('./files').getAvailableStyles
 if(args.listStyles){
-  console.log('Available styles: ', getAvailableStyles().join(', '))
+  console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '))
   process.exit(0)
 }
 
-
+if(args.listModes){
+  console.log('Available Modes: ', configUtils.getAvailableModes().join(', '))
+  process.exit(0)
+}
 
 if(args.help){
   var help = {
@@ -41,23 +39,30 @@ ${helpStr}
 // main !
 var config = {
   input: args.input,
-  style: args.style || 'standard',
+  style: args.style,
   output: args.output,
   debug: args.debug,
   mode: args.mode
 }
+
 
 if (!config.input) {
   console.log('Invalid call you must provide --input, aborting')
   process.exit(1)
 }
 
-var eslintPath = getEslintRcFor(config.style)
-if (!shell.test('-f', eslintPath)) {
-  console.log(`Invalid style ${config.style}. File dont exists: ${eslintPath}. Aborting`)
+if (!config.mode||configUtils.getAvailableModes().indexOf(config.mode)==-1) {
+  console.log(`Invalid mode ${config.mode}. Aborting`)
   process.exit(1)
 }
+
+var eslintPath = configUtils.getEslintRcFor(config.style)
 config.eslintPath = eslintPath
+
+if (!shell.test('-f', eslintPath)) {
+  console.log(`Invalid style ${config.style}. Aborting`)
+  process.exit(1)
+}
 
 config.source = shell.cat(config.input).toString()
 

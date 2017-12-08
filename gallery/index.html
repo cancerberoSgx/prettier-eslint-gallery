@@ -16,6 +16,9 @@
             width: 1050px !important;
             height: 705px !important;
         }
+        table{
+            width: 100%;
+        }
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -61,33 +64,99 @@
     <h1>Files</h1>
     <table>
         <tr>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/input/sccollection.js">sccollection.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-airbnb-normal.js">sccollection-airbnb-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-common-normal.js">sccollection-common-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-google-normal.js">sccollection-google-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-gulp-normal.js">sccollection-gulp-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-hapi-normal.js">sccollection-hapi-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-node-normal.js">sccollection-node-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-standard-normal.js">sccollection-standard-normal.js</button>
-        </td>
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="../assets/output/sccollection-walmart-normal.js">sccollection-walmart-normal.js</button>
-        </td>
+            <td>
+                <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/input/sccollection.js">sccollection (original)</button>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-airbnb-default.js">airbnb-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-airbnb-defaultMinifyFirst.js">airbnb-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-airbnb-onlyEslintFix.js">airbnb-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-airbnb-onlyEslintFixMinifyFirst.js">airbnb-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-common-default.js">common-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-common-defaultMinifyFirst.js">common-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-common-onlyEslintFix.js">common-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-common-onlyEslintFixMinifyFirst.js">common-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-google-default.js">google-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-google-defaultMinifyFirst.js">google-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-google-onlyEslintFix.js">google-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-google-onlyEslintFixMinifyFirst.js">google-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-gulp-default.js">gulp-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-gulp-defaultMinifyFirst.js">gulp-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-gulp-onlyEslintFix.js">gulp-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-gulp-onlyEslintFixMinifyFirst.js">gulp-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-hapi-default.js">hapi-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-hapi-defaultMinifyFirst.js">hapi-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-hapi-onlyEslintFix.js">hapi-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-hapi-onlyEslintFixMinifyFirst.js">hapi-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-mdcs-default.js">mdcs-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-mdcs-defaultMinifyFirst.js">mdcs-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-mdcs-onlyEslintFix.js">mdcs-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-mdcs-onlyEslintFixMinifyFirst.js">mdcs-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-node-default.js">node-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-node-defaultMinifyFirst.js">node-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-node-onlyEslintFix.js">node-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-node-onlyEslintFixMinifyFirst.js">node-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-standard-default.js">standard-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-standard-defaultMinifyFirst.js">standard-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-standard-onlyEslintFix.js">standard-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-standard-onlyEslintFixMinifyFirst.js">standard-onlyEslintFixMinifyFirst</button><br/>
+            </td>
+            <td>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-walmart-default.js">walmart-default</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-walmart-defaultMinifyFirst.js">walmart-defaultMinifyFirst</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-walmart-onlyEslintFix.js">walmart-onlyEslintFix</button><br/>
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="../assets/output/sccollection-walmart-onlyEslintFixMinifyFirst.js">walmart-onlyEslintFixMinifyFirst</button><br/>
+            </td>
         </tr>
     </table>    
 

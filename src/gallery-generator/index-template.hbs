@@ -16,6 +16,9 @@
             width: 1050px !important;
             height: 705px !important;
         }
+        table{
+            width: 100%;
+        }
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -62,11 +65,18 @@
     <table>
         {{#each files}}
         <tr>
-        {{#each this}}
-        <td>
-        <button type="button" class="btn btn-primary btn-lg edit-file-button" data-input-file="{{this}}">{{basename this}}</button>
-        </td>
-        {{/each}}
+            {{#each this}}  
+            <td>
+                {{#if @first}}
+                <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{fixOutputName this}} (original)</button>
+                {{else}}
+                {{#each this}}
+
+                    <button type="button" class="btn btn-link edit-file-button" data-input-file="{{this}}">{{fixOutputName this}}</button><br/>
+                {{/each}}
+                {{/if}}
+            </td>
+            {{/each}}
         </tr>
         {{/each}}
     </table>    

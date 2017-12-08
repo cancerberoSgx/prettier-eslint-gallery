@@ -9,13 +9,13 @@
 
 # What's this?
 
- * Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choise 
+ * Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choice 
  * Research how well current formatting tools so the job
- * Research euristics to do better job
+ * Research heuristics to do better job
 
 # Why?
 
- * Because I want to see how my code will look like when formatted to pooplular styles
+ * Because I want to see how my code will look like when formatted to popular styles
  * Because there are current formatting tools don't do a perfect work and we want to see how well they work and if we can improve it
  * Because when choosing a style is not only important to know the rules but also to see how our code will look like !
  * Because I want an easy to use command line tool to format code to popular styles that work as perfect as possible
@@ -23,7 +23,7 @@
 # Objectives
 
  * have tools that let users format their code using popular eslint like standard, airbnb, uber, etc. ideally online
- * have a cmd formatter tool that formats to popular eslints
+ * have a command line tool to format to popular enlist configurations
 
 # Install & using in command line
 
@@ -54,6 +54,13 @@ var config = {
 formatter(config) // synchronous !
 ```
 
+# Modes
+
+ * default: using prettier-eslint
+ * defaultMinifyFirst: like previous but removing spaces first
+ * onlyEslintFix: not using prettier, just eslint --fix option . Mainly we want to see how well it behaves - we hope some day it will be ready and we won't need prettier any more (i.e all formatting rules will have fixers)
+ * onlyEslintFixMinifyFirst: like previous but removing spaces first
+
 # Useful commands
 
 Run tests and regenerate all output files:
@@ -69,21 +76,22 @@ node src/gallery-generator/index
 static-server .
 ```
 
-# issues / TODOS
 
- * probably we will need to rename this project to someting more generic if we decide to use other tools besides prettier
- * test if thi works : npm install -g gallery
+# issues / TODO
+
+ * probably we will need to rename this project to something more generic if we decide to use other tools besides prettier
+ * test if this works : npm install -g gallery
  * npm publish
  * test node api doc in readme
  
  * --input to accept globs
 
- * add a static html that shows inputs and linkts to each output style <--- WIP
+ * add a static HTML that shows inputs and links to each output style <--- WIP
 
- * make a tool to check each of the stylesif they really work - check abobe. count errors before an after and report. 
+ * make a tool to check each of the styles if they really work - check above. count errors before an after and report. 
 
 
- * acept custom eslint - like for security - performance... 
+ * accept custom eslint - like for security - performance... 
  * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
   * https://github.com/gulpjs/eslint-config-gulp
@@ -98,6 +106,17 @@ static-server .
 
 
 
+
+<!-- 
+
+# propaganda: 
+
+after this project is more prepared - we should anounce so users take value - shis i s alist of where we can anounce it: 
+
+https://github.com/eslint/eslint/issues/5858
+
+
+-->
 
 
 <!-- # how to know if it really works?

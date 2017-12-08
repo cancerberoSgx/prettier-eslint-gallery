@@ -5,20 +5,21 @@
   "main": "src/tool.js",
   "bin": "src/index.js",
   "scripts": {
-    "test": "node node_modules/jasmine/bin/jasmine.js"
+    "test": "node node_modules/jasmine/bin/jasmine.js",
+    "gallery-dev": "node src/gallery-generator/index && static-server ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-eslint": "^8.0.3",
-    "escodegen": "^1.9.0",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-common": "^2.0.0",
     "eslint-config-google": "^0.9.1",
     "eslint-config-gulp": "^2.1.0",
     "eslint-config-hapi": "^11.1.0",
+    "eslint-config-mdcs": "^4.2.2",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-walmart": "^2.2.0",
     "eslint-plugin-filenames": "^1.2.0",
@@ -30,7 +31,6 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
-    "esprima": "^4.0.0",
     "handlebars": "^4.0.11",
     "prettier-eslint": "^8.2.5",
     "shelljs": "^0.7.8",
