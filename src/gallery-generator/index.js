@@ -6,7 +6,6 @@ handlebars.registerHelper('fixOutputName', function(s) {
     s = path.basename(s)
     s = s.substring(s.indexOf('-')+1, s.indexOf('.'))
     return s
-    
 })
 
 var template = handlebars.compile(fs.readFileSync('src/gallery-generator/index-template.hbs').toString())
@@ -22,7 +21,7 @@ var files = [ //TODO autogenerate
 
 var context = {
     files,
-    frontendScript: fs.readFileSync('src/gallery-generator/frontend-script.js').toString()
+    // frontendScript: fs.readFileSync('src/gallery-generator/frontend-script.js').toString()
 }
 
 var output = template(context)

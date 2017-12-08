@@ -82,7 +82,7 @@ static-server .
  * probably we will need to rename this project to something more generic if we decide to use other tools besides prettier
  * test if this works : npm install -g gallery
  * npm publish
- * test node api doc in readme
+ * test node API doc in readme
  
  * --input to accept globs
 
@@ -94,11 +94,12 @@ static-server .
  * accept custom eslint - like for security - performance... 
  * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
-  * https://github.com/gulpjs/eslint-config-gulp
-  * https://github.com/sindresorhus/eslint-config-xo
-  * https://github.com/dustinspecker/awesome-eslint
-  * https://github.com/walmartlabs/eslint-config-defaults
-  * https://github.com/FormidableLabs/eslint-config-formidable
+ * https://github.com/bodil/eslint-config-cleanjs
+ * https://github.com/gulpjs/eslint-config-gulp
+ * https://github.com/sindresorhus/eslint-config-xo
+ * https://github.com/dustinspecker/awesome-eslint
+ * https://github.com/walmartlabs/eslint-config-defaults
+ * https://github.com/FormidableLabs/eslint-config-formidable
 
 
   then there are other that has nothing to do with style but with performance , security - should investigate: 
