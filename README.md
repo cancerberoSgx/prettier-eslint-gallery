@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/cancerberoSgx/pretties-eslint-gallery.png?branch=master)](https://travis-ci.org/cancerberoSgx/pretties-eslint-gallery)
-[![Dependencies](https://david-dm.org/cancerberosgx/pretties-eslint-gallery.svg)](https://david-dm.org/cancerberosgx/pretties-eslint-gallery)
+[![Build Status](https://travis-ci.org/cancerberoSgx/prettier-eslint-gallery.png?branch=master)](https://travis-ci.org/cancerberoSgx/prettier-eslint-gallery)
+[![Dependencies](https://david-dm.org/cancerberosgx/prettier-eslint-gallery.svg)](https://david-dm.org/cancerberosgx/prettier-eslint-gallery)
 
 
 
