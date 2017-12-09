@@ -56,10 +56,8 @@ formatter(config) // synchronous !
 
 # Modes
 
- * default: using prettier-eslint
- * defaultMinifyFirst: like previous but removing spaces first
- * onlyEslintFix: not using prettier, just eslint --fix option . Mainly we want to see how well it behaves - we hope some day it will be ready and we won't need prettier any more (i.e all formatting rules will have fixers)
- * onlyEslintFixMinifyFirst: like previous but removing spaces first
+ * **default**: using prettier-eslint with prettierLast: true
+ * **onlyEslintFix**: not using prettier, just eslint --fix. It still have some issues but we want to compare with 'default' modes to see how well do the work. 
 
 # Useful commands
 
@@ -95,8 +93,6 @@ static-server .
  * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
  * https://github.com/bodil/eslint-config-cleanjs
- * https://github.com/gulpjs/eslint-config-gulp
- * https://github.com/sindresorhus/eslint-config-xo
  * https://github.com/dustinspecker/awesome-eslint
  * https://github.com/walmartlabs/eslint-config-defaults
  * https://github.com/FormidableLabs/eslint-config-formidable

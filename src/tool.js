@@ -15,8 +15,8 @@ module.exports.tool = function (config) {
     const options = {
       text: source,
       filePath: config.eslintPath,
-      logLevel: config.debug || undefined//,
-      // prettierLast: true//config.mode.indexOf('PrettierLast')!=-1
+      logLevel: config.debug || undefined,
+      prettierLast: true,
     }
     source = format(options)
   }

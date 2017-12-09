@@ -8,6 +8,10 @@ function showEditCodeModal(config) {
         var target = $('.editor-container')
         if (!editor) {
             editor = ace.edit(target.get(0))
+            editor.setShowInvisibles(true)
+            editor.setShowPrintMargin(false)
+            editor.setDisplayIndentGuides(false)
+            editor.setHighlightGutterLine(false)
             editor.getSession().setMode('ace/mode/javascript')
         }
         editor.setValue(data)
