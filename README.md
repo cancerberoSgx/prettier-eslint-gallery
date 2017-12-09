@@ -93,7 +93,6 @@ static-server .
  * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
  * https://github.com/bodil/eslint-config-cleanjs
- * https://github.com/dustinspecker/awesome-eslint
  * https://github.com/walmartlabs/eslint-config-defaults
  * https://github.com/FormidableLabs/eslint-config-formidable
 
@@ -102,6 +101,18 @@ static-server .
   https://www.npmjs.com/search?q=eslint-c&page=1&ranking=popularity
 
 
+<!-- 
+Doubts about prettier-eslint
+
+prettierPath
+
+node node_modules/eslint/bin/eslint.js -c eslint-config/airbnb/.eslintrc.js assets/input/sccollection.js --fix
+prettier assets/input/sccollection.js
+
+running eslint and prettier dont mess my arrow functions - in this order or viceversa
+
+but prettier-eslint does !!! why???
+ -->
 
 
 <!-- 

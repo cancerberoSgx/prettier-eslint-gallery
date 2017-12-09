@@ -15,12 +15,12 @@ define(
           required: true,
           fn: function() {
             return value.length > 20 ? 'Name is too long' : false;
-          }
+          },
         },
         phone: {
           required: true,
-          fn: _.validation.phone
-        }
+          fn: _.validation.phone,
+        },
       },
 
       //@property {String} url
@@ -47,7 +47,7 @@ define(
 
         //TODO: while, switch, json objects
         return data;
-      }
+      },
     });
   }
 );

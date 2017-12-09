@@ -1,21 +1,12 @@
-// files is Array<Array<String>> already defined
-
-
-
 var editor
 function showEditCodeModal(config) {
     $.get(config.path).then(function (data) {
         var target = $('.editor-container')
         if (!editor) {
             editor = ace.edit(target.get(0))
-            editor.setShowInvisibles(true)
-            editor.setShowPrintMargin(false)
-            editor.setDisplayIndentGuides(false)
-            editor.setHighlightGutterLine(false)
-            editor.getSession().setMode('ace/mode/javascript')
         }
         editor.setValue(data)
-        target.focus()
+        configureEditor(editor)
         $('.modal-title').text(config.fileName)
     })
     //TODO: not found error
@@ -27,6 +18,14 @@ $('.edit-file-button').click(function (event) {
     showEditCodeModal({ fileName: inputFile, path: inputFile })
 })
 
+
+function configureEditor(editor) {
+    editor.setShowInvisibles(true)
+    editor.setShowPrintMargin(false)
+    editor.setDisplayIndentGuides(false)
+    editor.setHighlightGutterLine(false)
+    editor.getSession().setMode('ace/mode/javascript')
+}
 
 
 function showDiff(file1, file2) {
@@ -48,7 +47,8 @@ function showDiff(file1, file2) {
                 gutterID: "gutter"
             }
         })
-
+        configureEditor(differ.getEditors().left)
+        configureEditor(differ.getEditors().right)
         $('#diffModal').modal({ show: true })
     })
 }

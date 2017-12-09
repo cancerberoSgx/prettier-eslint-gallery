@@ -1,20 +1,20 @@
 // @module Banana
-define(
-  'Banana.Collection'
-  ,	['Banana.Model',
-    'Backbone',
-    'underscore',
-  ]
-  ,	(
-    Model
-    ,	Backbone
-    ,	_,
-  ) =>
+define('Banana.Collection'
+,	['Banana.Model',
+  'Backbone',
+  'underscore',
+]
+,	(
+		Model
+	,	Backbone
+	,	_,
+	) => {
 
 
-    // @class Banana.Collection @extend Backbone.Collection
-    Backbone.Collection.extend({
-      // @property {Banana.Model} model
+	// @class Banana.Collection @extend Backbone.Collection
+  return Backbone.Collection.extend(
+    {
+		// @property {Banana.Model} model
       model: Model,
 
       validation: {
@@ -30,12 +30,12 @@ define(
         },
       },
 
-      // @property {String} url
+		// @property {String} url
       url: 'api/banana.php',
 
-      // @method comparator Defines a custom comparative method between Banana to sort the Banana taking into account if there are default shipping or default billing
-      // @param {Banana.Model} model
-      // @return {Number}
+		// @method comparator Defines a custom comparative method between Banana to sort the Banana taking into account if there are default shipping or default billing
+		// @param {Banana.Model} model
+		// @return {Number}
       comparator(model) {
         return (model.get('notready') || model.get('alreadyeaten')) ? 0 : 1;
       },
@@ -46,15 +46,15 @@ define(
             return 'jalisco';
           } else if (protein.name === 'menorca') {
             return 'montevideo';
+          } else {
+            return 'paysandu';
           }
-
-          return 'paysandu';
         });
         data.volumes = dic;
 
-        // TODO: while, switch, json objects
+			// TODO: while, switch, json objects
         return data;
       },
-    })
-  ,
+    },
 );
+});
