@@ -76,7 +76,11 @@ static-server .
 # issues / TODO
 
  * probably we will need to rename this project to something more generic if we decide to use other tools besides prettier
+
  * test if this works : npm install -g gallery
+ 
+ * as user I want to build the gallery to see how MY code will look like (not provided examples) and verify that this project will work ok
+
  * npm publish
  * test node API doc in readme
  

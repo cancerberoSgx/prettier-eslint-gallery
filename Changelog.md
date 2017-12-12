@@ -9,10 +9,12 @@
 ## 0.0.3
 
  * gallery initial contrib
- * diff
+ * gallery diff
  * prettier-eslint home made implementation because of prettier-eslint issue  https://github.com/prettier/prettier-eslint/issues/149
  * default-es5 mode to preserve valid es5 input (disable es6 eslint rules)
 
 ## 0.0.4
 
- * 
+ * npm install -g
+
+ ## 0.0.5

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // cmd line entry point
 var args = require('yargs-parser')(process.argv.slice(2))
 var configUtils = require('./config')
