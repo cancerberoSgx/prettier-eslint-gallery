@@ -18,3 +18,5 @@
  * npm install -g
 
  ## 0.0.5
+
+ * test node API doc in readme

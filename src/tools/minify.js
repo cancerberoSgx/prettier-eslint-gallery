@@ -1,6 +1,7 @@
 const UglifyJS = require("uglify-js")
 var shell = require('shelljs')
 var assert = require('assert')
+var path = require('path')
 
 module.exports.removeSpacesOnly = function (s) {
   let options = { mangle: false, output: { comments: true } }
@@ -8,9 +9,10 @@ module.exports.removeSpacesOnly = function (s) {
   return result.code
 }
 
-module.exports.eslintFixOnly = function(code, eslintrc){
+module.exports.eslintFixOnly = function (code, eslintrc) {
   shell.ShellString(code).to('tmp.js')
-  let cmd = `node node_modules/eslint/bin/eslint.js -c "${eslintrc}" --fix tmp.js`
+  var eslintPath = path.join(__dirname, '../..', 'node_modules/eslint/bin/eslint.js')
+  let cmd = `node ${eslintPath} -c "${eslintrc}" --fix tmp.js`
   console.log(cmd)
   shell.exec(cmd) // exit code probably !=0 so we don't check
 

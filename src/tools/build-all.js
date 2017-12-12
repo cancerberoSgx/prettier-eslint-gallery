@@ -3,24 +3,34 @@
 var shell = require('shelljs')
 var configTool = require('../config')
 var assert = require('assert')
+var path = require('path')
 
 function buildAll(config) {
-  shell.ls('assets/input/*.js').forEach(input => {
-    shell.ls('eslint-config').forEach(style => {
+  shell.ls(config.input+'/*.js').forEach(input => {
+    shell.ls(path.join(__dirname, '..', '..', 'eslint-config')).forEach(style => {
       doit(config, input, style)
     })
   })
 }
 
-function doit(config, input, style) {
+function doit(config, inputFile, style) {
+
   // if(style.indexOf('standard')==-1&&style.indexOf('airbnb')==-1)return //HEADS UP always comment this line !!!!! - just for make it faster while debugging
-  let cmd = `node src/index --input  ${input} --style ${style} --output assets/output/sccollection-${style}-${config.mode}.js --mode ${config.mode}` // TODO use API not cmd line
+  
+  var inputFileSimple = path.basename(inputFile, '.js')
+
+  var index = path.join(__dirname, '..', '..', 'src', 'index')
+  let cmd = `node ${index} --input  ${inputFile} --style ${style} --output ${config.output}/${inputFileSimple}-${style}-${config.mode}.js --mode ${config.mode}` // TODO use API not cmd line
   console.log(cmd)
   assert.equal(shell.exec(cmd).code, 0)
 }
 
-function main() {
-  configTool.getAvailableModes().forEach(mode => buildAll({ mode }))
+function main(config) {
+  config = config || {}
+  config.input = config.input || 'assets/input'
+  config.output = config.output || 'assets/output'
+  shell.mkdir('-p', config.output)
+  configTool.getAvailableModes().forEach(mode => buildAll(Object.assign(config, { mode })))
 }
 
 module.exports = main

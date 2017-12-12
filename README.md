@@ -28,7 +28,7 @@ You can install the tool globally:
 
 ```sh
 npm install -g prettier-eslint-gallery
-prettier-eslint-gallery --style standard --input src/one.js --output formatted.js
+prettier-eslint-gallery --style standard --mode default --input src/one.js --output formatted.js
 ```
 
 Or locally: 
@@ -43,7 +43,7 @@ node node_modules/prettier-eslint-gallery/src --style standard --input src/one.j
 ```javascript
 var formatter = require('prettier-eslint-gallery')
 var config = {
-  mode: 'normal', 
+  mode: 'default', 
   input: 'some/file.js',
   output: 'some/output.js',
   style: 'airbnb'
@@ -79,10 +79,9 @@ static-server .
 
  * test if this works : npm install -g gallery
  
- * as user I want to build the gallery to see how MY code will look like (not provided examples) and verify that this project will work ok
+ * as user I want to build the gallery to see how MY code will look like (not provided examples) and verify that this project will work ok. prettier-eslint-gallery --build-gallery --input my/sample/folderWithJsFiles --output gallery-output-folder - build a gallery for all supported styles and for all sample .js files in given folder so you can open using a static local server and see how your files will look like in popular eslint styles. 
 
  * npm publish
- * test node API doc in readme
  
  * --input to accept globs
 

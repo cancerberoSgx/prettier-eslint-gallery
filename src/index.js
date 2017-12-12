@@ -3,20 +3,19 @@
 var args = require('yargs-parser')(process.argv.slice(2))
 var configUtils = require('./config')
 const shell = require('shelljs')
-const path = require('path')
 const tool = require('./tool').tool
 
-if(args.listStyles){
+if (args.listStyles) {
   console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '))
   process.exit(0)
 }
 
-if(args.listModes){
+if (args.listModes) {
   console.log('Available Modes: ', configUtils.getAvailableModes().join(', '))
   process.exit(0)
 }
 
-if(args.help){
+if (args.help) {
   var help = {
     '--input': 'input file',
     '--style': 'one of the available styles, example: standard, airbnb, google, etc',
@@ -38,21 +37,33 @@ ${helpStr}
 
 
 // main !
+
 var config = {
   input: args.input,
   style: args.style,
   output: args.output,
   debug: args.debug,
-  mode: args.mode
+  mode: args.mode,
+  buildGallery: args.buildGallery
 }
 
+if (config.buildGallery) {
+  require('./tools/build-all')(config)
+  let finalOutput = path.join(config.output, 'assets', 'output')
+  shell.mkdir('-r', finalOutput)
+  shell.mkdir('-r', path.join(config.output, 'assets', 'input'))
+  shell.mv(path.join(config.output, '*.js'), finalOutput)
+  shell.cp(path.join(config.input, '*.js'), path.join(config.output, 'assets', 'input'))
+  shell.cp('-r',  path.join(__dirname, '..', 'gallery', '*'), finalOutput)
+  process.exit(0)
+}
 
 if (!config.input) {
   console.log('Invalid call you must provide --input, aborting')
   process.exit(1)
 }
 
-if (!config.mode||configUtils.getAvailableModes().indexOf(config.mode)==-1) {
+if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) == -1) {
   console.log(`Invalid mode ${config.mode}. Aborting`)
   process.exit(1)
 }
