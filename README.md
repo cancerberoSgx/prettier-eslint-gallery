@@ -2,8 +2,10 @@
 [![Dependencies](https://david-dm.org/cancerberosgx/prettier-eslint-gallery.svg)](https://david-dm.org/cancerberosgx/prettier-eslint-gallery)
 
 
+# [Gallery Demo](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/)
 
 [Gallery Demo](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/)
+
 
 [Project Home](https://github.com/cancerberoSgx/prettier-eslint-gallery)
 
@@ -19,11 +21,6 @@
  * Because there are current formatting tools don't do a perfect work and we want to see how well they work and if we can improve it
  * Because when choosing a style is not only important to know the rules but also to see how our code will look like !
  * Because I want an easy to use command line tool to format code to popular styles that work as perfect as possible
-
-# Objectives
-
- * have tools that let users format their code using popular eslint like standard, airbnb, uber, etc. ideally online
- * have a command line tool to format to popular enlist configurations
 
 # Install & using in command line
 
@@ -56,7 +53,8 @@ formatter(config) // synchronous !
 
 # Modes
 
- * **default**: using prettier-eslint with prettierLast: true
+ * **default**: if first run prettier (inferring prettier configs from eslint config) and then eslint --fix
+ * **default-es5**: Same as default, but disabling all eslint ecma6 rules. This causes that if you pass an es5 file as input it won't be fixed to use es6 constructions even if eslint config say so. For example, if the eslint-config defines prefer-arrow-callback: 'error' the rule will be disabled so the es5 input source will keep being es5
  * **onlyEslintFix**: not using prettier, just eslint --fix. It still have some issues but we want to compare with 'default' modes to see how well do the work. 
 
 # Useful commands

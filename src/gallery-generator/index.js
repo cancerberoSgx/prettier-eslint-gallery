@@ -3,14 +3,15 @@ var fs = require('fs')
 var path = require('path')
 
 var modeNames = {
-    default: 'prettier-eslint',
-    onlyEslintFix: 'eslint-fix'
+    'default': 'default',
+    'default_es5': 'default-es5',
+    'onlyEslintFix': 'only-eslint'
 }
 handlebars.registerHelper('getMode', function(s) {
     s = path.basename(s)
     s = s.substring(s.indexOf('-')+1, s.indexOf('.'))
     s = s.split('-')[1]
-    return modeNames[s] || s
+    return (modeNames[s] || s)
 })
 
 handlebars.registerHelper('getName', function(s) {

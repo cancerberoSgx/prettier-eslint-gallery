@@ -12,10 +12,11 @@ module.exports.tool = function (config) {
     source = customFormatTools.eslintFixOnly(source, config.eslintPath)
   }
   else if (config.mode.startsWith('default')) {
-    source = require('./tools/prettierEslint')({
+    source = require('./tools/prettierEslint').prettierEslint({
       text: source,
       filePath: config.eslintPath,
       logLevel: config.debug || undefined,
+      es5: config.mode.endsWith('_es5')
     })
   }
   else {
