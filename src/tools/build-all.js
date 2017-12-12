@@ -15,8 +15,9 @@ function buildAll(config) {
 
 function doit(config, inputFile, style) {
 
-  // if(style.indexOf('standard')==-1&&style.indexOf('airbnb')==-1)return //HEADS UP always comment this line !!!!! - just for make it faster while debugging
-  
+  // ** HEADS UP always comment the following line !!!!! - just for make it faster while debugging
+  // if(style.indexOf('standard')==-1 && style.indexOf('airbnb')==-1){return} 
+
   var inputFileSimple = path.basename(inputFile, '.js')
 
   var index = path.join(__dirname, '..', '..', 'src', 'index')

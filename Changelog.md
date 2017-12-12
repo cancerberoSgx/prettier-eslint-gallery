@@ -20,3 +20,8 @@
  ## 0.0.5
 
  * test node API doc in readme
+ * --build-gallery so users can build the gallery from their project's input files to see how they will look like in popular eslint-configs
+
+ ## 0.0.6
+
+ * 

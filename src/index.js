@@ -4,6 +4,7 @@ var args = require('yargs-parser')(process.argv.slice(2))
 var configUtils = require('./config')
 const shell = require('shelljs')
 const tool = require('./tool').tool
+var path = require('path')
 
 if (args.listStyles) {
   console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '))
@@ -50,11 +51,11 @@ var config = {
 if (config.buildGallery) {
   require('./tools/build-all')(config)
   let finalOutput = path.join(config.output, 'assets', 'output')
-  shell.mkdir('-r', finalOutput)
-  shell.mkdir('-r', path.join(config.output, 'assets', 'input'))
+  shell.mkdir('-p', finalOutput)
+  shell.mkdir('-p', path.join(config.output, 'assets', 'input'))
   shell.mv(path.join(config.output, '*.js'), finalOutput)
   shell.cp(path.join(config.input, '*.js'), path.join(config.output, 'assets', 'input'))
-  shell.cp('-r',  path.join(__dirname, '..', 'gallery', '*'), finalOutput)
+  shell.cp('-r',  path.join(__dirname, '..', 'gallery'), config.output)
   process.exit(0)
 }
 

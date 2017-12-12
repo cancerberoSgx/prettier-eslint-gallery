@@ -57,6 +57,16 @@ formatter(config) // synchronous !
  * **default-es5**: Same as default, but disabling all eslint ecma6 rules. This causes that if you pass an es5 file as input it won't be fixed to use es6 constructions even if eslint config say so. For example, if the eslint-config defines prefer-arrow-callback: 'error' the rule will be disabled so the es5 input source will keep being es5
  * **onlyEslintFix**: not using prettier, just eslint --fix. It still have some issues but we want to compare with 'default' modes to see how well do the work. 
 
+# Generate your own gallery
+
+If you want to generate the gallery using your own project's files and input to see how they will look like, just choose some files from your project and put them in folder `my/sample/folderWithJsFiles` and running the following command will generate a working gallery in `gallery-output-folder`. You need to open the folder using a static server since the application perform ajax requests: 
+
+ $ prettier-eslint-gallery --build-gallery --input my/sample/folderWithJsFiles --output gallery-output-folder
+ $ static-server gallery-output-folder
+ $ firefox  http://localhost:9080/gallery/index.html
+
+
+
 # Useful commands
 
 Run tests and regenerate all output files:
@@ -79,7 +89,6 @@ static-server .
 
  * test if this works : npm install -g gallery
  
- * as user I want to build the gallery to see how MY code will look like (not provided examples) and verify that this project will work ok. prettier-eslint-gallery --build-gallery --input my/sample/folderWithJsFiles --output gallery-output-folder - build a gallery for all supported styles and for all sample .js files in given folder so you can open using a static local server and see how your files will look like in popular eslint styles. 
 
  * npm publish
  
