@@ -1,8 +1,8 @@
-//@module Banana
+// @module Banana
 define(
     "Banana.Collection",
     ["Banana.Model", "Backbone", "underscore"],
-    function(Model, Backbone, _) {
+    (Model, Backbone, _) => {
         "use strict";
 
         //@class Banana.Collection @extend Backbone.Collection

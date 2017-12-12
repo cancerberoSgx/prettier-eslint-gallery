@@ -1,4 +1,4 @@
-const format = require('prettier-eslint')
+
 const customFormatTools = require('./tools/minify')
 
 module.exports.tool = function (config) {
@@ -12,12 +12,10 @@ module.exports.tool = function (config) {
     source = customFormatTools.eslintFixOnly(source, config.eslintPath)
   }
   else if (config.mode.startsWith('default')) {
-    source = format({
+    source = require('./tools/prettierEslint')({
       text: source,
       filePath: config.eslintPath,
       logLevel: config.debug || undefined,
-      prettierPath: 'prettier',
-      // prettierLast: true,
     })
   }
   else {

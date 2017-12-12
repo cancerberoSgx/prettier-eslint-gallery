@@ -2,7 +2,7 @@
 define(
     'Banana.Collection',
     ['Banana.Model', 'Backbone', 'underscore'],
-    function(Model, Backbone, _) {
+    (Model, Backbone, _) => {
         'use strict';
 
         //@class Banana.Collection @extend Backbone.Collection
@@ -13,7 +13,7 @@ define(
             validation: {
                 name: {
                     required: true,
-                    fn: function() {
+                    fn: function () {
                         return value.length > 20 ? 'Name is too long' : false;
                     }
                 },
@@ -29,21 +29,22 @@ define(
             //@method comparator Defines a custom comparative method between Banana to sort the Banana taking into account if there are default shipping or default billing
             //@param {Banana.Model} model
             //@return {Number}
-            comparator: function(model) {
+            comparator: function (model) {
                 return model.get('notready') || model.get('alreadyeaten')
                     ? 0
                     : 1;
             },
 
-            parse: function(data) {
-                var dic = _.map(data.proteins, function(protein) {
+            parse: function (data) {
+                var dic = _.map(data.proteins, (protein) => {
                     if (protein.name === 'mallorca') {
                         return 'jalisco';
-                    } else if (protein.name === 'menorca') {
-                        return 'montevideo';
-                    } else {
-                        return 'paysandu';
                     }
+                    else if (protein.name === 'menorca') {
+                        return 'montevideo';
+                    }
+                    return 'paysandu';
+
                 });
                 data.volumes = dic;
 
