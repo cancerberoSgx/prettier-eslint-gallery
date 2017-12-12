@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+
 // cmd line entry point
+
 var args = require('yargs-parser')(process.argv.slice(2))
 var configUtils = require('./config')
 const shell = require('shelljs')
@@ -49,13 +51,20 @@ var config = {
 }
 
 if (config.buildGallery) {
+  if (!config.input || !config.output) {
+    console.log('Invalid call you must provide --input and --output. Aborting')
+    process.exit(1)
+  }
   require('./tools/build-all')(config)
   let finalOutput = path.join(config.output, 'assets', 'output')
   shell.mkdir('-p', finalOutput)
   shell.mkdir('-p', path.join(config.output, 'assets', 'input'))
   shell.mv(path.join(config.output, '*.js'), finalOutput)
   shell.cp(path.join(config.input, '*.js'), path.join(config.output, 'assets', 'input'))
-  shell.cp('-r',  path.join(__dirname, '..', 'gallery'), config.output)
+
+  // generate gallery html
+  shell.cp('-r', path.join(__dirname, '..', 'gallery'), config.output)
+  require('./gallery-generator/generate-gallery')(config)
   process.exit(0)
 }
 
