@@ -1,13 +1,16 @@
-
 const customFormatTools = require('./tools/minify')
+const configUtils = require('./config')
 
-module.exports.tool = function (config) {
+module.exports = function formatterTool(config) {
+
   var source = config.source
+  config.mode = config.mode || configUtils.getDefaultMode()
+
+  config.eslintPath = config.eslintPath || configUtils.getEslintRcFor(config.style)
 
   if (config.mode.indexOf('MinifyFirst') != -1) {
     source = customFormatTools.removeSpacesOnly(source)
   }
-
   if (config.mode.startsWith('onlyEslintFix')) {
     source = customFormatTools.eslintFixOnly(source, config.eslintPath)
   }

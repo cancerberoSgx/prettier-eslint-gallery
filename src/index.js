@@ -2,11 +2,11 @@
 
 // cmd line entry point
 
-var args = require('yargs-parser')(process.argv.slice(2))
-var configUtils = require('./config')
+const args = require('yargs-parser')(process.argv.slice(2))
+const configUtils = require('./config')
 const shell = require('shelljs')
-const tool = require('./tool').tool
-var path = require('path')
+const path = require('path')
+const tool = require('./tool')
 
 if (args.listStyles) {
   console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '))
@@ -19,7 +19,7 @@ if (args.listModes) {
 }
 
 if (args.help) {
-  var help = {
+  let help = {
     '--input': 'input file',
     '--style': 'one of the available styles, example: standard, airbnb, google, etc',
     '--output': 'output file',
@@ -28,7 +28,7 @@ if (args.help) {
     '--list-styles': 'list available styles',
     '--list-modes': 'list available modes'
   }
-  var helpStr = JSON.stringify(help, 0, 2)
+  let helpStr = JSON.stringify(help, 0, 2)
   console.log(`
 Usage: 
  $ tools --input src/some.js --output src/some-formatted.js --style airnbn
@@ -62,13 +62,13 @@ if (config.buildGallery) {
   shell.mv(path.join(config.output, '*.js'), finalOutput)
   shell.cp(path.join(config.input, '*.js'), path.join(config.output, 'assets', 'input'))
 
-  // generate gallery html
+  // generate gallery HTML
   shell.cp('-r', path.join(__dirname, '..', 'gallery'), config.output)
   require('./gallery-generator/generate-gallery')(config)
   process.exit(0)
 }
 
-if (!config.input) {
+if (!config.input && !config.source) {
   console.log('Invalid call you must provide --input, aborting')
   process.exit(1)
 }
@@ -78,6 +78,9 @@ if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) == -1) 
   process.exit(1)
 }
 
+
+config.source = config.source || shell.cat(config.input).toString()
+
 var eslintPath = configUtils.getEslintRcFor(config.style)
 config.eslintPath = eslintPath
 
@@ -85,8 +88,6 @@ if (!shell.test('-f', eslintPath)) {
   console.log(`Invalid style ${config.style}. Aborting`)
   process.exit(1)
 }
-
-config.source = shell.cat(config.input).toString()
 
 const formatted = tool(config)
 
