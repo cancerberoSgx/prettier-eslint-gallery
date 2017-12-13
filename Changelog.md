@@ -24,4 +24,9 @@
 
  ## 0.0.6
 
+ * fixed nodejs API (only for input strings)
+ * ore specs
+
+ ## 0.0.7
+
  * 

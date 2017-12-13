@@ -26,8 +26,4 @@ describe('node api', () => {
         expect(result).toContain(`  if (a > 1) {`)
     })
 
-
-
-
-
 })

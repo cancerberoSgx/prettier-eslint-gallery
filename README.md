@@ -48,9 +48,21 @@ Or locally:
   const formatter = require('prettier-eslint-gallery')
   let config = {
       source: `var arr = [1,2,3].map(function(a){return a+1})`
-      style: 'airbnb',
+      style: 'walmart',
   }
-        let result = formatter(config)
+  let result = formatter(config)
+```
+
+Then `result` will be the formatted code using the `walmart` style guide, something like this: 
+
+```javascript
+const arr = [1, 2, 3].map(a => {
+  if (a > 1) {
+    return a + 1;
+  } else {
+    return a + 10;
+  }
+});
 ```
 
 # Modes
