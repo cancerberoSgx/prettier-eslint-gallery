@@ -23,8 +23,7 @@ module.exports = function formatterTool(config) {
     })
   }
   else {
-    console.log('Invalid mode ' + config.mode + '. Aborting. ')
-    process.exit(1)
+    throw new Error ('Invalid mode ' + config.mode + '. Aborting. ')
   }
 
   return source

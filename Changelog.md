@@ -29,4 +29,4 @@
 
  ## 0.0.7
 
- * 
+ * basic tool .d.ts typescript definitions

@@ -4,6 +4,7 @@
   "description": "Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choise ",
   "main": "src/tool.js",
   "bin": "src/index.js",
+  "typings": "src/tool.d.ts",
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js",
     "gallery-dev": "node src/gallery-generator/index && static-server ."
