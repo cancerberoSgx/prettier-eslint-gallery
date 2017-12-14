@@ -17,16 +17,20 @@
 
  * npm install -g
 
- ## 0.0.5
+## 0.0.5
 
  * test node API doc in readme
  * --build-gallery so users can build the gallery from their project's input files to see how they will look like in popular eslint-configs
 
- ## 0.0.6
+## 0.0.6
 
  * fixed nodejs API (only for input strings)
  * ore specs
 
- ## 0.0.7
+## 0.0.7
 
  * basic tool .d.ts typescript definitions
+
+## 0.0.7
+
+ * 
