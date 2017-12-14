@@ -47,7 +47,7 @@ Or locally:
 ```javascript
   const formatter = require('prettier-eslint-gallery')
   let config = {
-      source: `var arr = [1,2,3].map(function(a){return a+1})`
+      source: `var arr = [1,2,3].map(function(a){return a+1})`,
       style: 'walmart',
   }
   let result = formatter(config)
