@@ -9,8 +9,13 @@
     "test": "node node_modules/jasmine/bin/jasmine.js",
     "gallery-dev": "node src/gallery-generator/index && static-server ."
   },
-  "keywords": ["JavaScript", "formatter", "eslint", "prettier"],
-  "author": "",
+  "keywords": [
+    "JavaScript",
+    "formatter",
+    "eslint",
+    "prettier"
+  ],
+  "author": "cancerberosgx",
   "license": "ISC",
   "dependencies": {
     "babel-eslint": "^8.0.3",
@@ -36,6 +41,7 @@
     "eslint-plugin-relay": "0.0.19",
     "eslint-plugin-shopify": "^18.2.0",
     "eslint-plugin-standard": "^3.0.1",
+    "glob": "^7.1.2",
     "handlebars": "^4.0.11",
     "prettier": "^1.9.2",
     "prettier-eslint": "^8.2.5",

@@ -1,2 +1,2 @@
 
-require('./generate-gallery')()
+require('./generate-gallery').main()

@@ -53,7 +53,7 @@ Or locally:
   let result = formatter(config)
 ```
 
-Then `result` will be the formatted code using the `walmart` style guide, something like this: 
+Then `result` will be the formatted code using the `walmart` style guide, something like this:
 
 ```javascript
 const arr = [1, 2, 3].map(a => {
@@ -80,6 +80,10 @@ If you want to generate the gallery using your own project's files and input to 
  $ static-server gallery-output-folder
  $ firefox  http://localhost:9080/gallery/index.html
 ```
+
+# Editors extensions
+
+ * Visual Studio Code : https://github.com/cancerberoSgx/prettier-eslint-gallery-vscode-extension
 
 # Research
 
@@ -135,4 +139,3 @@ Generate output and gallery:
 
  * then there are other that has nothing to do with style but with performance , security - should investigate:
   https://www.npmjs.com/search?q=eslint-c&page=1&ranking=popularity - do they work with --fix ?
-
