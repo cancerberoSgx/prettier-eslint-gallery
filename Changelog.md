@@ -31,8 +31,10 @@
 
  * basic tool .d.ts typescript definitions
 
-## 0.0.8
+## 0.0.8, 0.0.9
 
  * fix requires to work as dependency
 
-## 0.0.9
+## 0.1.0
+
+ *
