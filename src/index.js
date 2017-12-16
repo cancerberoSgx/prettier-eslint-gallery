@@ -46,6 +46,7 @@ const config = {
   output: args.output,
   debug: args.debug,
   mode: args.mode,
+  eslintPath: args.eslintPath,
   buildGallery: args.buildGallery,
 };
 

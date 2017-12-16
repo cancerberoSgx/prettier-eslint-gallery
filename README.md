@@ -46,10 +46,10 @@ Or locally:
 
 **IMPORTANT** if you want to format input files don't pass any `--output` argument and input files will be re-written
 
-If you want to use your own custom .eslintrc file you can pass its path in the --style argument and you are responsible of installing its dependencies. Note, is mandatory that the file is named .eslintrc :
+If you want to use your own custom `.eslintrc` file you can pass its path in `--eslint-path` instead of `--stylev argument. In this case the file name needs to be `eslintrc` and and you are responsible of installing its dependencies:
 
 ```sh
-  prettier-eslint-gallery --style ./eslintrc.js --input "./src/**/*.js"
+  prettier-eslint-gallery --eslint-path ./eslintrc.js --input "./src/**/*.js"
 ```
 
 # nodejs API
@@ -68,7 +68,7 @@ const config = {
 formatter(config);
 ```
 
-**IMPORTANT** if you want to re-write input files just don't pass the `output`n property
+**IMPORTANT** if you want to re-write input files just don't pass the `output` property
 
 ## Format a JavaScript code string
 
@@ -127,8 +127,6 @@ Generate output and gallery:
 
 
 # issues / TODO
-
- * accept custom eslint - I have my own that extends a popular one - I want to pass it like tool --input --output --style my/.eslintrc.js - user will be responsible of installing dependencies
 
  * probably we will need to rename this project to something more generic if we decide to use other tools besides prettier
 
