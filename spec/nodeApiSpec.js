@@ -4,7 +4,6 @@ shell.config.silent = true
 
 describe('node api', () => {
     it('should generate the html with links to input and output files', () => {
-
         let source = shell.cat('src/gallery-generator/generate-gallery.js').toString()
         expect(source).not.toContain(`registerHelper('getMode', (s) => {`)
         let config = {

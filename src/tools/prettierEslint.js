@@ -1,11 +1,21 @@
-// responsible of calling prettier-eslint , prettier or eslint. 
+// responsible of calling prettier-eslint , prettier or eslint.
 
 // this files contains 2 different implementations of prettier - eslint . the default one using prettier-eslint and a home-made one - because of https://github.com/prettier/prettier-eslint/issues/149
 
 var path = require('path')
+var shell = require('shelljs')
 
+function customRequire(required){
+    if(shell.test('-e', `${__dirname}/../../node_modules/${required}`)) {
+        return require(`${__dirname}/../../node_modules/${required}`)
+    }
+    else if(shell.test('-e', `${__dirname}/../../../../node_modules/${required}`)) {
+        return require(`${__dirname}/./../../../node_modules/${required}`)
+    }
+    else return require(`${__dirname}/../../node_modules/${required}`) // will fail but we want to to debug
+}
 function prettierEslint(options) {
-    return require(path.join(__dirname, '../../node_modules/prettier-eslint'))(options)
+    return customRequire('prettier-eslint')(options)
 }
 
 module.exports.prettierEslint = function (options) {
@@ -13,11 +23,11 @@ module.exports.prettierEslint = function (options) {
     // return prettierEslint(options)
 }
 
-// implements prettierEslint's API 
+// implements prettierEslint's API
 function homeMadePrettierEslint(options) {
     //prettier first
     var prettierConfig = getPrettierConfigFromEslint(options.filePath)
-    var prettier = require(path.join(__dirname, '../../node_modules/prettier'))
+    var prettier = customRequire('prettier')
     if (options.logLevel) {
         console.log('Prettier options: ', JSON.stringify(prettierConfig))
     }
@@ -28,7 +38,7 @@ function homeMadePrettierEslint(options) {
     if(options.es5){
         Object.assign(eslintConfig, getEslintE5Rules())
     }
-    var Linter = require(path.join(__dirname, '../../node_modules/eslint')).Linter
+    var Linter = customRequire('eslint').Linter
     var linter = new Linter()
     var messages = linter.verifyAndFix(code, eslintConfig)
     if (options.logLevel) {
@@ -41,7 +51,7 @@ function homeMadePrettierEslint(options) {
 
 // home made implementation:
 function getEslintConfigFromPath(eslintConfigPath, eslintOptions = {}) {
-    const { CLIEngine } = require(path.join(__dirname, '../../node_modules/eslint'))
+    const { CLIEngine } = customRequire('eslint')
     var eslintCli = new CLIEngine(eslintOptions)
     const config = eslintCli.getConfigForFile(eslintConfigPath)
     return config
@@ -49,7 +59,7 @@ function getEslintConfigFromPath(eslintConfigPath, eslintOptions = {}) {
 
 function getPrettierConfigFromEslint(eslintConfigPath) {
     var config = getEslintConfigFromPath(eslintConfigPath)
-    var getOptionsForFormatting = require(path.join(__dirname, '../../node_modules/prettier-eslint/dist/utils.js')).getOptionsForFormatting
+    var getOptionsForFormatting = customRequire('prettier-eslint/dist/utils.js').getOptionsForFormatting
     var prettierConfig = getOptionsForFormatting(config)
     return prettierConfig.prettier
 }
@@ -57,7 +67,7 @@ function getPrettierConfigFromEslint(eslintConfigPath) {
 
 
 function getEslintE5Rules(){
-    return {   
+    return {
         'rules': {
             'arrow-body-style': 'off',
             'arrow-parens': 'off',

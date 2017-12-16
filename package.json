@@ -9,7 +9,7 @@
     "test": "node node_modules/jasmine/bin/jasmine.js",
     "gallery-dev": "node src/gallery-generator/index && static-server ."
   },
-  "keywords": [],
+  "keywords": ["JavaScript", "formatter", "eslint", "prettier"],
   "author": "",
   "license": "ISC",
   "dependencies": {
