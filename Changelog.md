@@ -37,4 +37,4 @@
 
 ## 0.1.0
 
- *
+ * input globs, output or re-write support

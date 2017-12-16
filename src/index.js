@@ -6,7 +6,7 @@ const args = require('yargs-parser')(process.argv.slice(2));
 const configUtils = require('./config');
 const shell = require('shelljs');
 const path = require('path');
-const tool = require('./tool');
+const format = require('./tool');
 
 if (args.listStyles) {
   console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '));
@@ -31,7 +31,7 @@ if (args.help) {
   const helpStr = JSON.stringify(help, 0, 2);
   console.log(`
 Usage:
- $ tools --input src/some.js --output src/some-formatted.js --style airnbn
+ $ tools --input src/some.js --style airnbn
 Options:
 ${helpStr}
 `);
@@ -70,19 +70,4 @@ if (!shell.test('-f', config.eslintPath)) {
   process.exit(1);
 }
 
-function format(config){
-  // config.input could be just one file or a glob - in the later case we ignore output and just re-write input file content
-
-  let files = require('glob').sync(config.input).forEach
-//
-
-  config.source = config.source || shell.cat(config.input).toString();
-  const formatted = tool(config);
-
-  if (config.output) {
-    shell.ShellString(formatted).to(config.output);
-  } else {
-    console.log(formatted);
-  }
-}
-format(config)
+const formatted = format(config);

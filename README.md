@@ -32,17 +32,37 @@ You can install the tool globally:
 
 ```sh
  $ npm install -g prettier-eslint-gallery
- $ prettier-eslint-gallery --style standard --mode default --input src/one.js --output formatted.js
+ $ prettier-eslint-gallery --style standard --mode default --input "./src/**/*.js" --output ./src-formatted
 ```
 
 Or locally:
 
 ```sh
  $ npm install --save-dev prettier-eslint-gallery
- $ node node_modules/prettier-eslint-gallery/src --style standard --input src/one.js --output formatted.js
+ $ node node_modules/prettier-eslint-gallery/src --style standard --input "./src/**/*.js" --output ./src-formatted
 ```
 
+**IMPORTANT** if you want to format input files don't pass any `--output` argument and input files will be re-written
+
 # nodejs API
+
+
+## Format files
+Format several files and put the formatted versions in a separate folder:
+
+```javascript
+const formatter = require('prettier-eslint-gallery')
+const config = {
+  input: './src/**/*.js',
+  output: './src-formatted',
+  style: 'airbnb',
+};
+formatter(config);
+```
+
+**IMPORTANT** if you want to re-write input files just don't pass the `output`n property
+
+## Format a JavaScript code string
 
 ```javascript
   const formatter = require('prettier-eslint-gallery')
@@ -52,7 +72,6 @@ Or locally:
   }
   let result = formatter(config)
 ```
-
 Then `result` will be the formatted code using the `walmart` style guide, something like this:
 
 ```javascript
@@ -64,6 +83,7 @@ const arr = [1, 2, 3].map(a => {
   }
 });
 ```
+
 
 # Modes
 
@@ -110,21 +130,12 @@ Generate output and gallery:
 
 # issues / TODO
 
- * --input to accept globs
-
- * --replace (replace input file(s))
+ * accept custom eslint - I have my own that extends a popular one - I want to pass it like tool --input --output --style my/.eslintrc.js - user will be responsible of installing dependencies
 
  * probably we will need to rename this project to something more generic if we decide to use other tools besides prettier
 
- * test if this works : npm install -g gallery
+ * Research: make a tool to check each of the styles if they really work - check above. count formatting errors before an after and report for all - so we have an idea of how well --fix works and observe how it evolves
 
- * npm publish
-
- * add a static HTML that shows inputs and links to each output style <--- WIP
-
- * make a tool to check each of the styles if they really work - check above. count formatting errors before an after and report for all - so we have an idea of how well --fix works and observe how it evolves
-
- * accept custom eslint - I have my own that extends a popular one - I want to pass it like tool --input --output --style my/.eslintrc.js - user will be responsible of installing dependencies
 
  * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
