@@ -43,7 +43,7 @@ function formatString(config) {
   let source = config.source;
   config.mode = config.mode || configUtils.getDefaultMode();
 
-  config.eslintPath = config.eslintPath || configUtils.getEslintRcFor(config.style);
+  config.eslintPath = config.eslintPath ? path.resolve(config.eslintPath) : configUtils.getEslintRcFor(config.style);
 
   if (config.mode.indexOf('MinifyFirst') != -1) {
     source = customFormatTools.removeSpacesOnly(source);

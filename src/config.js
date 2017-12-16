@@ -5,7 +5,13 @@ const eslintRcMap = { // config file map for supporting different config formats
   'node': '.eslintrc.yaml'
 }
 module.exports.getEslintRcFor = function getEslintRcFor (style) {
-  return path.join(__dirname, '..', 'eslint-config', style, eslintRcMap[style] || '.eslintrc.js')
+  // if(shell.test('-f', style)){
+  //   console.log('using custom style')
+  //   return style
+  // }
+  // else {
+    return path.join(__dirname, '..', 'eslint-config', style, eslintRcMap[style] || '.eslintrc.js')
+  // }
 }
 
 module.exports.getAvailableStyles = function getAvailableStyles() {

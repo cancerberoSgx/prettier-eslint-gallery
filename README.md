@@ -2,17 +2,19 @@
 [![Dependencies](https://david-dm.org/cancerberosgx/prettier-eslint-gallery.svg)](https://david-dm.org/cancerberosgx/prettier-eslint-gallery)
 
 
+[Project Home](https://github.com/cancerberoSgx/prettier-eslint-gallery)
+
+
 # [Gallery Demo](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/)
 
 [Gallery Demo](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/)
 
 
-[Project Home](https://github.com/cancerberoSgx/prettier-eslint-gallery)
-
 # What's this?
 
- * JavaScript code formatting tool that support popular style guides. Command line and node.js API
- * Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choice
+ * JavaScript code formatting tool that support popular eslint style guides with zero configuration
+ * Command line and node.js API
+ * [Gallery of popular eslint configurations](https://cancerberosgx.github.io/prettier-eslint-gallery/gallery/) for JavaScript styles so I can see how they look like and make a choice
  * Easy/Automatic gallery generation from user's custom JavaScript input files (so they can see how their files will look like and vote!)
 
 # Why?
@@ -44,6 +46,12 @@ Or locally:
 
 **IMPORTANT** if you want to format input files don't pass any `--output` argument and input files will be re-written
 
+If you want to use your own custom .eslintrc file you can pass its path in the --style argument and you are responsible of installing its dependencies. Note, is mandatory that the file is named .eslintrc :
+
+```sh
+  prettier-eslint-gallery --style ./eslintrc.js --input "./src/**/*.js"
+```
+
 # nodejs API
 
 
@@ -72,17 +80,6 @@ formatter(config);
   }
   let result = formatter(config)
 ```
-Then `result` will be the formatted code using the `walmart` style guide, something like this:
-
-```javascript
-const arr = [1, 2, 3].map(a => {
-  if (a > 1) {
-    return a + 1;
-  } else {
-    return a + 10;
-  }
-});
-```
 
 
 # Modes
@@ -90,6 +87,7 @@ const arr = [1, 2, 3].map(a => {
  * **default**: if first run prettier (inferring prettier config from eslint config) and then eslint --fix
  * **default-es5**: Same as default, but disabling all eslint ecma6 rules. This causes that if you pass an es5 file as input it won't be fixed to use es6 constructions even if eslint config say so. For example, if the eslint-config defines prefer-arrow-callback: 'error' the rule will be disabled so the es5 input source will keep being es5
  * **onlyEslintFix**: not using prettier, just eslint --fix. It still have some issues but we want to compare with 'default' modes to see how well do the work.
+
 
 # Generate your own gallery
 
@@ -137,7 +135,7 @@ Generate output and gallery:
  * Research: make a tool to check each of the styles if they really work - check above. count formatting errors before an after and report for all - so we have an idea of how well --fix works and observe how it evolves
 
 
- * we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
+ * Research - if we detect issues the following could be the cause: we are installing all the eslint plugins in the same project - but i notice that standard and airbnb require particular versions of plugins and they could be incompatible... try to separate individual projects in
 
  * https://github.com/felixge/node-style-guide/blob/master/.eslintrc
  * https://github.com/WordPress-Coding-Standards/eslint-config-wordpress/blob/master/index.js
