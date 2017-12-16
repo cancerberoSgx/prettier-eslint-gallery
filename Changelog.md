@@ -1,5 +1,5 @@
 ## 0.0.2
- 
+
  * npm test do this ----> shell script or js that generate all outputs with a single command
  * tool --list-styles // list all supported styles
  * tool --help
@@ -31,6 +31,8 @@
 
  * basic tool .d.ts typescript definitions
 
-## 0.0.7
+## 0.0.8
 
- * 
+ * fix requires to work as dependency
+
+## 0.0.9

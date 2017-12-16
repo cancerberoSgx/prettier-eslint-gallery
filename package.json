@@ -1,6 +1,6 @@
 {
   "name": "prettier-eslint-gallery",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Gallery of popular eslint configurations for JavaScript styles so I can see how they look like and make a choise ",
   "main": "src/tool.js",
   "bin": "src/index.js",
