@@ -9,7 +9,7 @@ const modeNames = {
   onlyEslintFix: 'only-eslint',
 };
 
-module.exports.main = function main(config) {
+var main = module.exports.main = function main(config) {
   config = config || {};
   config.outputFolder = config.output
     ? path.join(config.output, 'assets', 'output')
@@ -58,7 +58,7 @@ module.exports.buildGallery = function buildGallery(config) {
     console.log('Invalid call you must provide --input and --output. Aborting');
     process.exit(1);
   }
-  require('./tools/build-all')(config);
+  require('../tools/build-all')(config);
   const finalOutput = path.join(config.output, 'assets', 'output');
   shell.mkdir('-p', finalOutput);
   shell.mkdir('-p', path.join(config.output, 'assets', 'input'));
@@ -66,6 +66,6 @@ module.exports.buildGallery = function buildGallery(config) {
   shell.cp(path.join(config.input, '*.js'), path.join(config.output, 'assets', 'input'));
 
   // generate gallery HTML
-  shell.cp('-r', path.join(__dirname, '..', 'gallery'), config.output);
+  shell.cp('-r', path.join(__dirname, '..', '..', 'gallery'), config.output);
   main(config);
 };
