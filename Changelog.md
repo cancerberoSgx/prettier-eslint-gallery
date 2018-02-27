@@ -43,3 +43,5 @@
 
  * custom eslintrc as --style
  * cli api spec
+
+## 0.1.2
