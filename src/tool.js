@@ -6,10 +6,16 @@ const prettierEslint = require('./tools/prettierEslint').prettierEslint;
 const path = require('path');
 
 module.exports = function format(config) {
+  if(config.debug){
+    console.log(config)
+  }
   if (config.source) {
     return formatString(config);
   }
   const files = glob(config.input);
+  if(config.debug){
+    console.log(`Formatting ${files.length} files`)
+  }
   const inputFilesPrefix = sharedStart(files);
 
   files.forEach((file) => {
