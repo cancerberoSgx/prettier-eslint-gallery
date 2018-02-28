@@ -45,3 +45,7 @@
  * cli api spec
 
 ## 0.1.2
+
+ * eslint path issue fix when used from third party project
+
+## 0.1.3

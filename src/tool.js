@@ -6,19 +6,23 @@ const prettierEslint = require('./tools/prettierEslint').prettierEslint;
 const path = require('path');
 
 module.exports = function format(config) {
-  if(config.debug){
-    console.log(config)
+  if (config.debug) {
+    console.log(config);
   }
   if (config.source) {
     return formatString(config);
   }
   const files = glob(config.input);
-  if(config.debug){
-    console.log(`Formatting ${files.length} files`)
+  if (config.debug) {
+    console.log(`Formatting ${files.length} files`);
+  }
+  if (!files.length) {
+    console.log('No files to format, exiting. ');
+    process.exit(0);
   }
   const inputFilesPrefix = sharedStart(files);
 
-  files.forEach((file) => {
+  files.forEach(file => {
     config.source = shell.cat(file).toString();
     const formatted = formatString(config);
     let outputFile;
@@ -49,7 +53,9 @@ function formatString(config) {
   let source = config.source;
   config.mode = config.mode || configUtils.getDefaultMode();
 
-  config.eslintPath = config.eslintPath ? path.resolve(config.eslintPath) : configUtils.getEslintRcFor(config.style);
+  config.eslintPath = config.eslintPath
+    ? path.resolve(config.eslintPath)
+    : configUtils.getEslintRcFor(config.style);
 
   if (config.mode.indexOf('MinifyFirst') != -1) {
     source = customFormatTools.removeSpacesOnly(source);
