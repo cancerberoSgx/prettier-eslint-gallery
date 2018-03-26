@@ -49,3 +49,7 @@
  * eslint path issue fix when used from third party project
 
 ## 0.1.3
+
+ * dependencies updated
+
+## 0.1.4
