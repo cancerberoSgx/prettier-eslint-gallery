@@ -87,15 +87,15 @@ formatter(config);
 
 The following are configuration properties that works both for the node.js API and for the CLI. In the case of the command line make sure you --property-name instead of --propertyName:
 
-Name | Description 
-input | path to file or glob of files to format.
-output | output folder where to put formatted files. If ommited input files will be overriden
-style | One of popular styles like airbnb, eslint, fbjs, google, standard, walmart, etc.
-eslint-path
-eslintPath | path to a custom eslintrc. `style` will be ignored and user is responsible of installing custom eslint config dependencies. 
-debug | if true it will print debug info in stdout
-buildGallery | will build gallery from `input` instead of formatting. 
-mode | see `Modes` section
+| Name | Description |
+| --- | --- |
+| input | path to file or glob of files to format. |
+| output | output folder where to put formatted files. If ommited input files will be overrided
+| style | One of popular styles like airbnb, eslint, fbjs, google, standard, walmart, etc.
+| eslintPath | path to a custom eslintrc. `style` will be ignored and user is responsible of installing custom eslint config dependencies. |
+| debug | if true it will print debug info in stdout |
+| buildGallery | will build gallery from `input` instead of formatting. |
+| mode | see `Modes` section |
 
 # Modes
 
