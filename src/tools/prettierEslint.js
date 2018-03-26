@@ -22,7 +22,7 @@ module.exports.prettierEslint = function(options) {
 
 // implements prettierEslint's API
 function homeMadePrettierEslint(options) {
-  //prettier first
+  // prettier first
   var prettierConfig = getPrettierConfigFromEslint(options.filePath);
   var prettier = customRequire('prettier');
   if (options.logLevel) {
@@ -30,19 +30,19 @@ function homeMadePrettierEslint(options) {
   }
   const code = prettier.format(options.text, prettierConfig);
 
-  //eslint last:
+  // eslint last:
   const eslintConfig = getEslintConfigFromPath(options.filePath);
   if (options.es5) {
     Object.assign(eslintConfig, getEslintE5Rules());
   }
   const Linter = customRequire('eslint').Linter;
   const linter = new Linter();
-  const messages = linter.verifyAndFix(code, eslintConfig);
+  const result = linter.verifyAndFix(code, eslintConfig);
   if (options.logLevel) {
     console.log('Eslint config: \n', JSON.stringify(eslintConfig));
-    console.log('\nEslint verifyAndFix() output; \n', JSON.stringify(messages, 0, 2));
+    console.log('\nEslint verifyAndFix() output; \n', JSON.stringify(result, 0, 2));
   }
-  return messages.output;
+  return result.output;
 }
 
 // home made implementation:

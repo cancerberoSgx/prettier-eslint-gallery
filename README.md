@@ -46,7 +46,9 @@ Or locally:
 
 **IMPORTANT** if you want to format input files don't pass any `--output` argument and input files will be re-written
 
-If you want to use your own custom `.eslintrc` file you can pass its path in `--eslint-path` instead of `--stylev argument. In this case the file name needs to be `eslintrc` and and you are responsible of installing its dependencies:
+## Using custom eslintrc
+
+If you want to use your own custom `.eslintrc` file you can pass its path in `--eslint-path` instead of `--style argument`. In this case the file name needs to be `eslintrc` and and you are responsible of installing its dependencies:
 
 ```sh
   prettier-eslint-gallery --eslint-path ./eslintrc.js --input "./src/**/*.js"
@@ -81,6 +83,19 @@ formatter(config);
   let result = formatter(config)
 ```
 
+# Configuration properties
+
+The following are configuration properties that works both for the node.js API and for the CLI. In the case of the command line make sure you --property-name instead of --propertyName:
+
+Name | Description 
+input | path to file or glob of files to format.
+output | output folder where to put formatted files. If ommited input files will be overriden
+style | One of popular styles like airbnb, eslint, fbjs, google, standard, walmart, etc.
+eslint-path
+eslintPath | path to a custom eslintrc. `style` will be ignored and user is responsible of installing custom eslint config dependencies. 
+debug | if true it will print debug info in stdout
+buildGallery | will build gallery from `input` instead of formatting. 
+mode | see `Modes` section
 
 # Modes
 
