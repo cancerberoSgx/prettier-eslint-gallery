@@ -45,7 +45,7 @@ const config = {
   style: args.style,
   output: args.output,
   debug: args.debug,
-  mode: args.mode,
+  mode: args.mode || configUtils.getDefaultMode(),
   eslintPath: args.eslintPath,
   buildGallery: args.buildGallery,
 };
@@ -65,7 +65,8 @@ if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) == -1) 
   console.log(`Invalid mode ${config.mode}. Aborting`);
   process.exit(1);
 }
-config.eslintPath = configUtils.getEslintRcFor(config.style);
+
+config.eslintPath = config.eslintPath || configUtils.getEslintRcFor(config.style);
 if (!shell.test('-f', config.eslintPath)) {
   console.log(`Invalid style ${config.style}. Aborting`);
   process.exit(1);

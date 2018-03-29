@@ -23,19 +23,25 @@ module.exports = function format(config) {
   const inputFilesPrefix = sharedStart(files);
 
   files.forEach(file => {
-    config.source = shell.cat(file).toString();
-    const formatted = formatString(config);
-    let outputFile;
-    if (config.output) {
-      outputFile = path.join(config.output, file.substring(inputFilesPrefix.length, file.length));
-      shell.mkdir('-p', path.dirname(outputFile));
-    } else {
-      outputFile = file;
+    try{
+      config.source = shell.cat(file).toString();
+      const formatted = formatString(config);
+      let outputFile;
+      if (config.output) {
+        outputFile = path.join(config.output, file.substring(inputFilesPrefix.length, file.length));
+        shell.mkdir('-p', path.dirname(outputFile));
+      } else {
+        outputFile = file;
+      }
+      if (config.log) {
+        console.log(`Writing ${outputFile}`);
+      }
+      shell.ShellString(formatted).to(outputFile);
     }
-    if (config.log) {
-      console.log(`Writing ${outputFile}`);
+    catch(ex){
+      console.log(`Error formatting ${file}`)
+      throw ex
     }
-    shell.ShellString(formatted).to(outputFile);
   });
 };
 

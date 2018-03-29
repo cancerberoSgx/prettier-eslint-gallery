@@ -53,3 +53,6 @@
  * dependencies updated
 
 ## 0.1.4
+
+ * CLI --mode not required 
+ * debug which file has syntax error when glob
