@@ -10,7 +10,8 @@ function customRequire(required) {
     return require(`${__dirname}/../../node_modules/${required}`);
   } else if (shell.test('-e', `${__dirname}/../../../../node_modules/${required}`)) {
     return require(`${__dirname}/../../../../node_modules/${required}`);
-  } return require(`${__dirname}/../../node_modules/${required}`); // will fail but we want to to debug
+  }
+  return require(`${__dirname}/../../node_modules/${required}`); // will fail but we want to to debug
 }
 // function prettierEslint(options) {
 //   return customRequire('prettier-eslint')(options);

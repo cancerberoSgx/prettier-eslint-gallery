@@ -5,7 +5,6 @@
 const args = require('yargs-parser')(process.argv.slice(2));
 const configUtils = require('./config');
 const shell = require('shelljs');
-const path = require('path');
 const format = require('./tool');
 
 if (args.listStyles) {
@@ -20,7 +19,7 @@ if (args.listModes) {
 
 if (args.help) {
   const help = {
-    '--input': 'input file',
+    '--input': 'input file - can be passed many times',
     '--style': 'one of the available styles, example: standard, airbnb, google, etc',
     '--output': 'output file',
     '--debug': 'TODO',
@@ -66,10 +65,10 @@ if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) == -1) 
   process.exit(1);
 }
 
-config.eslintPath = config.eslintPath || configUtils.getEslintRcFor(config.style);
+config.eslintPath = config.eslintPath || configUtils.getEslintRcFor(config.style) || './.eslintrc.json';
 if (!shell.test('-f', config.eslintPath)) {
   console.log(`Invalid style ${config.style}. Aborting`);
   process.exit(1);
 }
 
-const formatted = format(config);
+format(config);

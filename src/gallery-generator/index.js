@@ -1,1 +1,1 @@
-require('./generate-gallery').main()
+require('./generate-gallery').main();

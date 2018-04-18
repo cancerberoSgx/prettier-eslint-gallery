@@ -2,7 +2,7 @@ const customFormatTools = require('./tools/minify');
 const configUtils = require('./config');
 const glob = require('glob').sync;
 const shell = require('shelljs');
-const prettierEslint = require('./tools/prettierEslint').prettierEslint;
+const { prettierEslint } = require('./tools/prettierEslint');
 const path = require('path');
 
 function formatString(config) {
@@ -32,7 +32,6 @@ function formatString(config) {
   return source;
 }
 
-
 function sharedStart(array) {
   let A = array.concat().sort(),
     a1 = A[0],
@@ -43,7 +42,6 @@ function sharedStart(array) {
   return a1.substring(0, i);
 }
 
-
 module.exports = function format(config) {
   if (config.debug) {
     console.log(config);
@@ -51,7 +49,12 @@ module.exports = function format(config) {
   if (config.source) {
     return formatString(config);
   }
-  const files = glob(config.input);
+  let files = [];
+  config.input = config.input instanceof Array ? config.input : [config.input]
+  config.input.forEach((input) => {
+    files = files.concat(glob(input)); // TODO: union - no repeats
+  });
+  // const files = glob(config.input);
   if (config.debug) {
     console.log(`Formatting ${files.length} files`);
   }
@@ -82,4 +85,3 @@ module.exports = function format(config) {
     }
   });
 };
-

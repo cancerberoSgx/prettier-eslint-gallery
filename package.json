@@ -8,7 +8,7 @@
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js",
     "gallery-dev": "node src/gallery-generator/index && static-server .",
-    "indent": "node src/index.js --style standard --mode default --input \"./src/**/*.js\" "
+    "indent": "node src/index.js --eslint-path \"./.eslintrc.json\" --input \"./src/**/*.js\" --input \"./spec/*.js\""
   },
   "keywords": [
     "JavaScript",
