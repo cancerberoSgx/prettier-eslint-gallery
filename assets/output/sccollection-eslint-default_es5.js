@@ -2,7 +2,7 @@
 define("Banana.Collection", [
     "Banana.Model",
     "Backbone",
-    "underscore"
+    "underscore",
 ], function(Model, Backbone, _) {
     "use strict";
 
@@ -16,12 +16,12 @@ define("Banana.Collection", [
                 required: true,
                 fn: function() {
                     return value.length > 20 ? "Name is too long" : false;
-                }
+                },
             },
             phone: {
                 required: true,
-                fn: _.validation.phone
-            }
+                fn: _.validation.phone,
+            },
         },
 
         //@property {String} url
@@ -48,6 +48,6 @@ define("Banana.Collection", [
 
             //TODO: while, switch, json objects
             return data;
-        }
+        },
     });
 });

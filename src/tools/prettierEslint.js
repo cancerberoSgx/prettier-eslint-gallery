@@ -2,29 +2,29 @@
 
 // this files contains 2 different implementations of prettier - eslint . the default one using prettier-eslint and a home-made one - because of https://github.com/prettier/prettier-eslint/issues/149
 
-var path = require('path');
-var shell = require('shelljs');
+const path = require('path');
+const shell = require('shelljs');
 
 function customRequire(required) {
   if (shell.test('-e', `${__dirname}/../../node_modules/${required}`)) {
     return require(`${__dirname}/../../node_modules/${required}`);
   } else if (shell.test('-e', `${__dirname}/../../../../node_modules/${required}`)) {
     return require(`${__dirname}/../../../../node_modules/${required}`);
-  } else return require(`${__dirname}/../../node_modules/${required}`); // will fail but we want to to debug
+  } return require(`${__dirname}/../../node_modules/${required}`); // will fail but we want to to debug
 }
-function prettierEslint(options) {
-  return customRequire('prettier-eslint')(options);
-}
+// function prettierEslint(options) {
+//   return customRequire('prettier-eslint')(options);
+// }
 
-module.exports.prettierEslint = function(options) {
+module.exports.prettierEslint = function (options) {
   return homeMadePrettierEslint(options);
 };
 
 // implements prettierEslint's API
 function homeMadePrettierEslint(options) {
   // prettier first
-  var prettierConfig = getPrettierConfigFromEslint(options.filePath);
-  var prettier = customRequire('prettier');
+  const prettierConfig = getPrettierConfigFromEslint(options.filePath);
+  const prettier = customRequire('prettier');
   if (options.logLevel) {
     console.log('Prettier options: ', JSON.stringify(prettierConfig));
   }

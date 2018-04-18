@@ -1,2 +1,1 @@
-
 require('./generate-gallery').main()

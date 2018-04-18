@@ -1,5 +1,6 @@
 //@module Banana
-define("Banana.Collection"
+define(
+"Banana.Collection"
 ,	[	"Banana.Model",
 		"Backbone",
 		"underscore"
@@ -12,8 +13,7 @@ define("Banana.Collection"
 
 
 	//@class Banana.Collection @extend Backbone.Collection
-	return Backbone.Collection.extend(
-	{
+	return Backbone.Collection.extend({
 		//@property {Banana.Model} model
 		model: Model,
 
@@ -56,4 +56,5 @@ define("Banana.Collection"
 			return data;
 		}
 	});
-});
+}
+);

@@ -48,18 +48,18 @@ describe('node api', () => {
 
   it('should accept custom eslintrc', () => {
     const config = {
-      source: `var foo = { "bar": "This is a bar.", "baz": { "qux": "This is a qux" }, "difficult": "to read" };`,
+      source: `var foo={"bar":"This is a bar.","baz":{ "qux": "This is a qux" }, "difficult": "to read" };`,
       style: 'standard',
     };
     const result = formatter(config);
-    expect(result).toContain(`bar: 'This is a bar.',\n  baz: { qux: 'This is a qux' },`)
+    expect(result).toContain(`const foo = { bar: 'This is a bar.'`)
 
     const config2 = {
       source: `var foo = { "bar": "This is a bar.", "baz": { "qux": "This is a qux" }, "difficult": "to read" };`,
       eslintPath: 'spec/assets/custom-eslint-config/.eslintrc.js',
     };
     const result2 = formatter(config2);
-    expect(result2).toContain(`var foo = { bar: 'This is a bar.', baz: { qux: 'This is a qux' }, difficult: 'to read' }`);
+    expect(result2).toContain(`const foo = { bar: 'This is a bar.', baz: { qux: 'This is a qux' }, difficult: 'to read' }`);
   });
 
 

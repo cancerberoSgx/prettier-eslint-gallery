@@ -3,7 +3,7 @@ define('Banana.Collection', [
   'Banana.Model',
   'Backbone',
   'underscore',
-], function(Model, Backbone, _) {
+], (Model, Backbone, _) => {
   'use strict';
 
   //@class Banana.Collection @extend Backbone.Collection
@@ -35,7 +35,7 @@ define('Banana.Collection', [
     },
 
     parse: function(data) {
-      var dic = _.map(data.proteins, function(protein) {
+      var dic = _.map(data.proteins, (protein) => {
         if (protein.name === 'mallorca') {
           return 'jalisco';
         } else if (protein.name === 'menorca') {

@@ -3,18 +3,18 @@ define('Banana.Collection', [
   'Banana.Model',
   'Backbone',
   'underscore',
-], function(Model, Backbone, _) {
-  'use strict';
+], (Model, Backbone, _) =>
+
 
   // @class Banana.Collection @extend Backbone.Collection
-  return Backbone.Collection.extend({
+  Backbone.Collection.extend({
     // @property {Banana.Model} model
     model: Model,
 
     validation: {
       name: {
         required: true,
-        fn: function() {
+        fn() {
           return value.length > 20 ? 'Name is too long' : false;
         },
       },
@@ -30,24 +30,22 @@ define('Banana.Collection', [
     // @method comparator Defines a custom comparative method between Banana to sort the Banana taking into account if there are default shipping or default billing
     // @param {Banana.Model} model
     // @return {Number}
-    comparator: function(model) {
+    comparator(model) {
       return model.get('notready') || model.get('alreadyeaten') ? 0 : 1;
     },
 
-    parse: function(data) {
-      let dic = _.map(data.proteins, function(protein) {
+    parse(data) {
+      const dic = _.map(data.proteins, (protein) => {
         if (protein.name === 'mallorca') {
           return 'jalisco';
         } else if (protein.name === 'menorca') {
           return 'montevideo';
-        } else {
-          return 'paysandu';
         }
+        return 'paysandu';
       });
       data.volumes = dic;
 
       // TODO: while, switch, json objects
       return data;
     },
-  });
-});
+  }));
