@@ -31,14 +31,19 @@ function homeMadePrettierEslint(options) {
   }
   const code = prettier.format(options.text, prettierConfig);
 
-  // eslint last:
+  // eslint last (using CLIEngine API executeOnText() and passing the config as object - fixed for es5 first if needed :
   const eslintConfig = getEslintConfigFromPath(options.filePath);
   if (options.es5) {
     Object.assign(eslintConfig, getEslintE5Rules());
   }
-  const Linter = customRequire('eslint').Linter;
-  const linter = new Linter();
-  const result = linter.verifyAndFix(code, eslintConfig);
+  const CLIEngine = customRequire("eslint").CLIEngine;
+  const cli = new CLIEngine({
+    baseConfig: eslintConfig,
+    fix: true,
+    useEslintrc: false
+  });
+  var result = cli.executeOnText(code).results[0];
+
   if (options.logLevel) {
     console.log('Eslint config: \n', JSON.stringify(eslintConfig));
     console.log('\nEslint verifyAndFix() output; \n', JSON.stringify(result, 0, 2));

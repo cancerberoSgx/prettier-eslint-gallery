@@ -4,7 +4,7 @@ define("Banana.Collection", [
   "Backbone",
   "underscore"
 ], function(Model, Backbone, _) {
-  "use strict";
+
 
   //@class Banana.Collection @extend Backbone.Collection
   return Backbone.Collection.extend({
