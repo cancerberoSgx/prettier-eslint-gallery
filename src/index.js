@@ -6,6 +6,7 @@ const args = require('yargs-parser')(process.argv.slice(2));
 const configUtils = require('./config');
 const shell = require('shelljs');
 const format = require('./tool');
+const galleryGenerator = require('./gallery-generator/generate-gallery');
 
 if (args.listStyles) {
   console.log('Available Styles: ', configUtils.getAvailableStyles().join(', '));
@@ -51,7 +52,7 @@ const config = {
 
 // used as gallery-generator
 if (config.buildGallery) {
-  require('./gallery-generator/generate-gallery').buildGallery(config);
+  galleryGenerator.buildGallery(config);
   process.exit(0);
 }
 
@@ -60,7 +61,7 @@ if (!config.input && !config.source) {
   console.log('Invalid call you must provide --input, aborting');
   process.exit(1);
 }
-if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) == -1) {
+if (!config.mode || configUtils.getAvailableModes().indexOf(config.mode) === -1) {
   console.log(`Invalid mode ${config.mode}. Aborting`);
   process.exit(1);
 }

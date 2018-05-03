@@ -14,16 +14,18 @@ describe('node api', () => {
     expect(result).toContain('  if (a > 1) {');
   });
 
-  it('if no output given then should rewrite files', () => {
+  it('if no output given then should rewrite files and return array of eslint-like reports for each processed file', () => {
     shell.cp('-r', 'spec/assets/sample1', 'spec/assets/sample1_');
     const config = {
       input: 'spec/assets/sample1_/**/*.js',
       style: 'airbnb',
     };
-    formatter(config);
+    const reports = formatter(config);
     expect(shell.cat('spec/assets/sample1_/inner/f2.js')).toContain('[a, b, c].map((n) => {');
     expect(shell.cat('spec/assets/sample1_/f1.js')).toContain('b = [1, 2, 3]');
     shell.rm('-rf', 'spec/assets/sample1_');
+    expect(reports.length).toBe(2);
+    expect(reports.find(r => r.file.includes('assets/sample1_/f1.js'))).toBeTruthy();
   });
 
   it('if output is given then should not rewrite files and output folder should have correct formatted files', () => {
@@ -60,5 +62,21 @@ describe('node api', () => {
     };
     const result2 = formatter(config2);
     expect(result2).toContain("const foo = { bar: 'This is a bar.', baz: { qux: 'This is a qux' }, difficult: 'to read' }");
+  });
+
+
+  it('should should throw exception in case of input syntax error ', (done) => {
+    const config = {
+      source:
+        'public class RedApple extends ThisIsNotJavaScript implements Apple{color: string',
+      style: 'standard',
+    };
+    try {
+      formatter(config);
+      fail('should throw exception');
+    } catch (error) {
+      expect(error.toString().includes('SyntaxError'));
+      done();
+    }
   });
 });

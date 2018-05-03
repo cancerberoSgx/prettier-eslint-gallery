@@ -59,3 +59,8 @@
  * fix eslint last apply - now use eslint CLIEngine and solve errors
 
 # 0.1.5
+ * fix issue in which es5 mode override all user rules :(
+   better return, minimal apidocs, and document what happen on errors
+   terrible very basic issue: when no errors we were ruining the input file when overriding it. 
+
+# 0.1.6
