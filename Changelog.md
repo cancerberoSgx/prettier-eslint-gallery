@@ -56,3 +56,6 @@
 
  * CLI --mode not required 
  * debug which file has syntax error when glob
+ * fix eslint last apply - now use eslint CLIEngine and solve errors
+
+# 0.1.5
