@@ -18,6 +18,10 @@
   ],
   "author": "cancerberosgx",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cancerberoSgx/prettier-eslint-gallery/issues"
+  },
+  "homepage": "https://github.com/cancerberoSgx/prettier-eslint-gallery#readme",
   "dependencies": {
     "babel-eslint": "^8.0.3",
     "eslint": "^4.13.1",
